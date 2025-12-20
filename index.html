@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shps mart</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <div class="left">
+        <button class="hamburger-menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="name">
+          <h1>Shps mart</h1>
+        </div>
+      </div>
+
+
+      <div class="center">
+
+
+        <div class="search-box">
+          <span class="icon-search"><i class="fa-solid fa-magnifying-glass"></i></span>
+          <input type="text" placeholder="Search essentials, groceries and more..." class="input-field">
+        </div>
+      </div>
+
+      <div class="right">
+        <div class="user-actions">
+          <div class="action-item">
+            <i class="fa-regular fa-user icon-blue"></i>
+            <span>Sign Up/Sign In</span>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="action-item">
+            <i class="fa-solid fa-cart-shopping icon-blue"></i>
+            <span>Cart</span>
+          </div>
+          <button class="mobile-search-btn" id="mobileSearchBtn">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+  </header>
+
+
+
+
+
+
+
+  <nav class="category-nav">
+    <div class="category-container" id="main-nav-cats">
+  <div class="category-item active" data-cat="all">All Categories</div>
+  <div class="category-item" data-cat="premium-fruits">Premium Fruits</div>
+  <div class="category-item" data-cat="home-kitchen">Home & Kitchen</div>
+  <div class="category-item" data-cat="fashion">Fashion</div>
+  <div class="category-item" data-cat="electronics">Electronics</div>
+  <div class="category-item" data-cat="beauty">Beauty</div>
+  <div class="category-item" data-cat="home-improvement">Home Improvement</div>
+  <div class="category-item" data-cat="sports">Sports, Toys & Luggage</div>
+</div>
+
+  </nav>
+
+
+
+
+
+
+
+
+
+
+
+  <section class="hero-section">
+    <div class="container">
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper" id="hero-slider-wrapper">
+        </div>
+
+        <div class="swiper-pagination custom-dots"></div>
+
+        <div class="swiper-button-next"><i class="fa-solid fa-chevron-right"></i></div>
+        <div class="swiper-button-prev"><i class="fa-solid fa-chevron-left"></i></div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+<section class="product-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Grab the best deal on <span id="current-cat-name">Smartphones</span></h2>
+     <a href="#" class="view-all">View All <i class="fa-solid fa-chevron-right"></i></a>
+    </div>
+
+    <div class="product-grid" id="product-display-grid">
+      </div>
+  </div>
+</section>
+
+
+  
+
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <script type="module" src="script.js"></script>
+</body>
+
+</html>

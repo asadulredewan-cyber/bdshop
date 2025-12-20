@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>Hero Admin</title>
+
+<style>
+*{box-sizing:border-box}
+body{font-family:Arial,Helvetica,sans-serif;background:#f3f4f6;padding:16px}
+h1,h2{margin:10px 0}
+input,select,button{width:100%;padding:8px;margin:4px 0}
+button{cursor:pointer}
+.btn{background:#111;color:#fff;border:0;border-radius:4px}
+.btn-danger{background:#c0392b}
+.btn-ghost{background:#e5e7eb}
+.hidden{display:none}
+.card{background:#fff;border-radius:6px;padding:12px;margin-bottom:12px}
+.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px}
+.topbar{display:flex;justify-content:space-between;align-items:center}
+.list .item{border:1px solid #e5e7eb;border-radius:6px;padding:8px;margin:6px 0}
+.list .item[draggable]{background:#fafafa}
+.list small{color:#555}
+.preview{width:268px;height:270px;object-fit:cover;border:1px dashed #ccc;border-radius:6px}
+pre{white-space:pre-wrap;background:#0b1020;color:#d1e7ff;padding:10px;border-radius:6px;max-height:240px;overflow:auto}
+.success{color:green}
+.error{color:#c0392b}
+</style>
+</head>
+
+<body>
+
+    <button onclick="syncHero()">Sync hero.json</button>
+
+
+<div class="topbar">
+  <h1>Hero Admin</h1>
+  <button id="logoutBtn" class="btn hidden">Logout</button>
+</div>
+
+<!-- LOGIN -->
+<div id="loginBox" class="card">
+  <h2>Admin Login</h2>
+  <input id="email" placeholder="Email">
+  <input id="password" type="password" placeholder="Password">
+  <button class="btn" id="loginBtn">Login</button>
+  <p id="loginMsg" class="error"></p>
+</div>
+
+<!-- PANEL -->
+<div id="panel" class="hidden">
+
+  <!-- FORM -->
+  <div class="card">
+    <h2>Add / Edit Hero Slide</h2>
+    <div class="row">
+      <input id="targetId" placeholder="Target ID (prod_099 / cat_001)">
+      <select id="type">
+        <option value="product">Product</option>
+        <option value="category">Category</option>
+      </select>
+    </div>
+    <input id="subtitle" placeholder="Subtitle">
+    <input id="title" placeholder="Title">
+    <input id="offer" placeholder="Offer">
+    <div class="row">
+      <input id="bgColor" placeholder="Background color (#0a4a44)">
+      <input id="imageUrl" placeholder="Image URL (auto from upload)">
+    </div>
+
+    <div class="row">
+      <input type="file" id="imgFile" accept="image/*">
+      <img id="preview" class="preview" />
+    </div>
+
+    <button class="btn" id="saveBtn">Save Slide</button>
+    <p id="formMsg"></p>
+  </div>
+
+  <!-- LIST -->
+  <div class="card">
+    <h2>Slides (Drag to reorder)</h2>
+    <div id="list" class="list"></div>
+  </div>
+
+  <!-- PUBLISH -->
+  <div class="card">
+    <h2>Publish hero.json</h2>
+    <button class="btn-ghost" id="publishBtn">Generate JSON (copy)</button>
+    <pre id="jsonOut"></pre>
+  </div>
+
+</div>
+
+<!-- ================= JS ================= -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged }
+  from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import { getFirestore, doc, getDoc, setDoc }
+  from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+
+
+  async function syncHero(){
+  const res = await fetch("/.netlify/functions/sync-hero");
+  const data = await res.json();
+  alert("hero.json synced");
+}
+
+/* ===== CONFIG ===== */
+const firebaseConfig = {
+  apiKey: "AIzaSyA-7Vh42USod2GdIzXEsDqKxQfeUHwFFDI",
+  authDomain: "ecom-81a47.firebaseapp.com",
+  projectId: "ecom-81a47",
+  storageBucket: "ecom-81a47.firebasestorage.app",
+  messagingSenderId: "929836126716",
+  appId: "1:929836126716:web:bd75e4b61a1336d2166279",
+  measurementId: "G-QLBXSS3Z9K"
+};
+const CLOUD = "dmqnuzexg";
+const PRESET = "admin_upload";
+
+/* ===== INIT ===== */
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+/* ===== STATE ===== */
+let slides = [];
+let editIndex = null;
+
+/* ===== AUTH ===== */
+loginBtn.onclick = () => {
+  signInWithEmailAndPassword(auth, email.value, password.value)
+    .catch(e => loginMsg.textContent = e.message);
+};
+logoutBtn.onclick = () => signOut(auth);
+
+onAuthStateChanged(auth, async (u)=>{
+  if(u){
+    loginBox.classList.add("hidden");
+    panel.classList.remove("hidden");
+    logoutBtn.classList.remove("hidden");
+    await loadSlides();
+  }else{
+    panel.classList.add("hidden");
+    logoutBtn.classList.add("hidden");
+  }
+});
+
+/* ===== CLOUDINARY UPLOAD (268x270) ===== */
+async function uploadImage(file){
+  const fd = new FormData();
+  fd.append("file", file);
+  fd.append("upload_preset", PRESET);
+  const r = await fetch(`https://api.cloudinary.com/v1_1/${CLOUD}/image/upload`,{
+    method:"POST", body:fd
+  });
+  const d = await r.json();
+  if(!d.secure_url) throw "Upload failed";
+  return d.secure_url.replace("/upload/","/upload/c_fill,w_268,h_270,f_auto,q_auto/");
+}
+imgFile.onchange = async ()=>{
+  try{
+    const url = await uploadImage(imgFile.files[0]);
+    imageUrl.value = url;
+    preview.src = url;
+  }catch(e){ formMsg.textContent = e; formMsg.className="error"; }
+};
+
+/* ===== LOAD / SAVE ===== */
+async function loadSlides(){
+  const snap = await getDoc(doc(db,"siteConfig","hero"));
+  slides = snap.exists() ? (snap.data().slides || []) : [];
+  renderList();
+}
+async function saveAll(){
+  await setDoc(doc(db,"siteConfig","hero"),{ slides });
+  renderList();
+}
+
+/* ===== FORM SAVE ===== */
+saveBtn.onclick = async ()=>{
+  if(!targetId.value || !title.value) {
+    formMsg.textContent="Target ID & Title required"; formMsg.className="error"; return;
+  }
+  const data = {
+    id: targetId.value,
+    type: type.value,
+    subtitle: subtitle.value || "",
+    title: title.value || "",
+    offer: offer.value || "",
+    image: imageUrl.value || "",
+    bgColor: bgColor.value || "#000"
+  };
+  if(editIndex !== null){
+    slides[editIndex] = data;
+    editIndex = null;
+  }else{
+    slides.push(data);
+  }
+  await saveAll();
+  formMsg.textContent="Saved"; formMsg.className="success";
+  targetId.value=subtitle.value=title.value=offer.value=imageUrl.value=bgColor.value="";
+  preview.src="";
+};
+
+/* ===== LIST / EDIT / DELETE / DRAG ===== */
+function renderList(){
+  list.innerHTML="";
+  slides.forEach((s,i)=>{
+    const d = document.createElement("div");
+    d.className="item";
+    d.draggable=true;
+    d.dataset.i=i;
+    d.innerHTML = `
+      <b>${s.title}</b> <small>(${s.type})</small><br>
+      <small>${s.subtitle}</small>
+      <div class="row">
+        <button class="btn-ghost" data-edit="${i}">Edit</button>
+        <button class="btn-danger" data-del="${i}">Delete</button>
+      </div>`;
+    list.appendChild(d);
+  });
+}
+list.addEventListener("click", async (e)=>{
+  if(e.target.dataset.edit){
+    editIndex = +e.target.dataset.edit;
+    const s = slides[editIndex];
+    targetId.value=s.id; type.value=s.type; subtitle.value=s.subtitle;
+    title.value=s.title; offer.value=s.offer; imageUrl.value=s.image;
+    bgColor.value=s.bgColor; preview.src=s.image;
+  }
+  if(e.target.dataset.del){
+    if(confirm("Delete slide?")){
+      slides.splice(+e.target.dataset.del,1);
+      await saveAll();
+    }
+  }
+});
+let dragI=null;
+list.addEventListener("dragstart", e=> dragI = e.target.dataset.i);
+list.addEventListener("dragover", e=> e.preventDefault());
+list.addEventListener("drop", async e=>{
+  const j = e.target.closest(".item")?.dataset.i;
+  if(j==null) return;
+  [slides[dragI], slides[j]] = [slides[j], slides[dragI]];
+  await saveAll();
+});
+
+/* ===== PUBLISH (JSON PREVIEW/COPY) ===== */
+publishBtn.onclick = async ()=>{
+  const snap = await getDoc(doc(db,"siteConfig","hero"));
+  if(!snap.exists()) return;
+  jsonOut.textContent = JSON.stringify(snap.data().slides, null, 2);
+};
+</script>
+
+</body>
+</html>

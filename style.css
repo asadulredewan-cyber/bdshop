@@ -1,0 +1,874 @@
+/* catagiry start line 232  */
+/* hero style 474 */
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+body {
+  padding-top: 60px; /* আপনার হেডারের আনুমানিক উচ্চতা অনুযায়ী এটি কম-বেশি করতে পারেন */
+}
+header {
+  background-color: #fafafa;
+  border-bottom: 1px solid #f0f0f0;
+  padding: 5px 0;
+  position: fixed;      /* এটি হেডারকে এক জায়গায় আটকে রাখবে */
+  top: 0;               /* স্ক্রিনের একদম উপরে থাকবে */
+  left: 0;              /* বাম দিক থেকে শুরু হবে */
+  width: 100%;          /* পুরো স্ক্রিন জুড়ে থাকবে */
+  z-index: 1000;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  gap: 20px;
+}
+
+/* বাম পাশের অংশ */
+.left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.hamburger-menu {
+  background-color: #f1f7f9;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  color: #00a0e3;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.name h1 {
+  color: #00a0e3;
+  font-size: 22px;
+  white-space: nowrap; /* লেখা যেন এক লাইনে থাকে */
+}
+
+/* মাঝখানের সার্চ বক্স */
+.center {
+  flex: 1;
+  max-width: 500px;
+  opacity: 1;
+  visibility: visible;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  background-color: #f1f7f9;
+  border-radius: 10px;
+  padding: 8px 15px;
+}
+
+.input-field {
+  border: none;
+  background: transparent;
+  outline: none;
+  width: 100%;
+  padding: 0 10px;
+  font-size: 14px;
+}
+
+.icon-search, .icon-list {
+  color: #00a0e3;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* ডান পাশের ইউজার অ্যাকশন */
+.right {
+  display: flex;
+  align-items: center;
+}
+
+.user-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.action-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: #444;
+  white-space: nowrap;
+}
+
+.icon-blue {
+  color: #00a0e3;
+  font-size: 18px;
+}
+
+.divider {
+  width: 1px;
+  height: 20px;
+  background-color: #ddd;
+}
+.mobile-search-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: #00a0e3;
+  font-size: 20px;
+  cursor: pointer;
+}
+/* মোবাইল ভিউর জন্য আপডেট *//* মোবাইল ভিউ (768px এর নিচে) */
+@media (max-width: 768px) {
+  .container {
+    justify-content: space-between;
+    flex-wrap: nowrap; /* আইটেমগুলো এক লাইনে রাখবে */
+  }
+
+  .center {
+    display: none; /* ডিফল্ট সার্চ বক্স হাইড */
+  }
+
+  .mobile-search-btn {
+    display: block; /* সার্চ আইকন দেখাবে */
+    margin-left: 10px;
+    padding: 5px;
+    background: #f1f7f9;
+    border-radius: 5px;
+  }
+
+  /* সার্চ বক্স যখন 'active' হবে তখন এটি হেডারের নিচে শো করবে */
+  .center.active {
+    display: block;
+    position: absolute;
+    top: 55px; /* হেডারের উচ্চতা অনুযায়ী অ্যাডজাস্ট করুন */
+    left: 0;
+    width: 100%;
+    padding: 10px 20px;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+    z-index: 1000;
+  }
+
+  .center.active .search-box {
+    max-width: 100%;
+  }
+
+  .action-item span {
+    display: none; /* শুধু আইকন দেখাবে */
+  }
+.center {
+    display: block; /* display: none এর বদলে এটি ব্যবহার করুন */
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    top: 55px;
+    left: 0;
+    width: 100%;
+    padding: 10px 20px;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    transform: translateY(-10px);
+  }
+
+  /* একটিভ হলে কন্টেন্ট দেখাবে */
+  .center.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .search-box {
+    width: 100%; /* মোবাইলে বক্সটি পুরো জায়গা নিবে */
+    background-color: #f1f7f9;
+    border-radius: 8px;
+  }
+
+}
+@media (max-width: 340px) {
+  .name h1 {
+    font-size: 16px; /* লোগোর নাম আরও ছোট করুন */
+  }
+  
+  .hamburger-menu {
+    padding: 5px; /* মেনু বাটনের প্যাডিং কমিয়ে দিন */
+  }
+  
+  .container {
+    gap: 2px; /* একদম মিনিমাম গ্যাপ */
+  }
+
+}
+
+
+@media (max-width: 280px) {
+  .name { 
+    display: none; 
+  }
+  
+  /* মেনু, সার্চ এবং কার্ট আইকনকে সমান দূরত্বে রাখার জন্য */
+  .container {
+    justify-content: space-around; 
+    gap: 10px;
+  }
+
+  .hamburger-menu, .mobile-search-btn, .action-item {
+    flex-shrink: 0; /* আইকনগুলো যেন ছোট না হয়ে যায় */
+  }
+}
+
+
+
+
+
+.category-nav {
+  width: 100%;
+  padding: 15px 0;
+  background: #fff;
+  border-bottom: 1px solid #f2f2f2;
+  
+}
+
+.category-container {
+  max-width: 1200px; /* আপনার হেডারের কন্টেইনার উইথ অনুযায়ী */
+  margin: 0 auto;
+  padding: 0 20px; /* হেডারের প্যাডিংয়ের সাথে একদম মিল রাখবেন */
+  display: flex;
+  flex-wrap: wrap;
+  /* ছবির মতো বাম থেকে ডানের সীমানা পর্যন্ত ছড়ানোর জন্য */
+  justify-content: space-between; 
+  align-items: center;
+}
+
+.category-item {
+  background: #f1f7f9;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 16px;
+  color: #444;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  /* অল্প মার্জিন যাতে গাদাগাদি না লাগে */
+  margin-bottom: 5px; 
+}
+
+.category-item.active {
+  background: #00a0e3;
+  color: #fff;
+}
+
+
+
+/* যখন ২য় লাইনে যাবে (ল্যাপটপে ৯+ আইটেম হলে) */
+@media (max-width: 1150px) {
+  .category-container {
+    justify-content: flex-start; /* ২য় লাইনে গেলে বাম দিক থেকে শুরু হবে */
+    gap: 15px;
+  }
+}
+
+/* মোবাইলে হাইড থাকবে */
+
+/* মোবাইলে হ্যামবার্গার মেনু ক্লিক করলে ক্যাটাগরি নেভ দেখাবে */
+@media (max-width: 768px) {
+  .category-nav {
+    display: none; /* ডিফল্টভাবে লুকানো */
+    position: absolute;
+    top: 55px; /* হেডারের নিচে */
+    left: 0;
+    width: 100%;
+    background: #fff;
+    border-bottom: 1px solid #f2f2f2;
+    z-index: 999;
+    padding: 10px 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  }
+
+  .category-nav.active {
+    display: block; /* ক্লিক করলে দেখা যাবে */
+  }
+
+  .category-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 0;
+  }
+
+  .category-item {
+    width: 100%;
+    border-radius: 8px;
+    padding: 10px 15px;
+    margin: 0;
+    justify-content: space-between;
+  }
+  
+  .category-item i {
+    margin-left: auto;
+  }
+}
+
+/* ল্যাপটপেও একইভাবে কাজ করবে */
+@media (min-width: 769px) {
+  .category-nav {
+    display: block !important; /* ল্যাপটপে সবসময় দেখাবে */
+  }
+}
+
+/* মোবাইলে ক্যাটাগরি আইটেম হোভার ইফেক্ট */
+.category-item:hover {
+  background: #e0f0f5;
+  transition: background 0.3s ease;
+}
+
+.category-item.active:hover {
+  background: #0090c9;
+}
+
+
+
+
+
+/* সাইডবার কন্টেইনার */
+.sidebar-menu {
+  position: fixed;
+  top: 0;
+  left: -300px; /* ডিফল্টভাবে লুকানো */
+  width: 280px;
+  height: 100vh;
+  background: #fff;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+  z-index: 1100;
+  transition: left 0.3s ease;
+  overflow-y: auto;
+  padding-top: 60px; /* হেডারের জন্য স্পেস */
+}
+
+.sidebar-menu.active {
+  left: 0; /* খুললে দেখা যাবে */
+}
+
+/* সাইডবার ব্যাকড্রপ */
+.sidebar-backdrop {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.3);
+  z-index: 1099;
+}
+
+.sidebar-backdrop.active {
+  display: block;
+}
+
+/* সাইডবার হেডার */
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 20px;
+  border-bottom: 1px solid #eee;
+  position: fixed;
+  top: 0;
+  width: 280px;
+  background: #fff;
+  z-index: 2;
+}
+
+.sidebar-header h2 {
+  color: #00a0e3;
+  font-size: 18px;
+}
+
+.close-sidebar {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #666;
+  cursor: pointer;
+  padding: 5px;
+}
+
+/* সাইডবার ক্যাটাগরি আইটেম - category-nav এর মতো */
+.sidebar-category {
+  padding: 15px;
+}
+
+.sidebar-category-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 15px;
+  border-radius: 20px; /* category-item এর মতো */
+  margin-bottom: 8px;
+  cursor: pointer;
+  color: #444;
+  font-size: 14px;
+  background: #f1f7f9; /* category-item এর মতো */
+  transition: background 0.3s ease;
+}
+
+.sidebar-category-item:hover {
+  background: #e0f0f5;
+}
+
+.sidebar-category-item.active {
+  background: #00a0e3;
+  color: #fff;
+}
+
+/* হেডারে হ্যামবার্গার আইকন */
+.hamburger-menu i {
+  transition: transform 0.3s ease;
+}
+
+/* ল্যাপটপে মূল category-nav সবসময় দেখাবে */
+@media (min-width: 769px) {
+  .category-nav {
+    display: block !important;
+  }
+}
+
+/* মোবাইলে মূল category-nav লুকানো */
+@media (max-width: 768px) {
+  .category-nav {
+    display: none !important;
+  }
+  
+  .sidebar-menu {
+    width: 85%;
+    max-width: 300px;
+    left: -100%;
+  }
+  
+  .sidebar-header {
+    width: 85%;
+    max-width: 300px;
+  }
+  
+  .sidebar-category-item {
+    font-size: 13px;
+    padding: 10px 15px;
+  }
+}
+
+
+
+
+
+
+
+/* --- Hero Section Styles 00000- */
+.hero-section {
+  width: 100%;
+  padding: 25px 0; /* হেডার থেকে কিছুটা গ্যাপ */
+  background-color: #ffffff;
+}
+
+/* স্লাইডারের মেইন কন্টেইনার - হেডারের সাথে মেলাতে */
+.hero-section .container {
+  max-width: 1200px; /* আপনার হেডারের কন্টেইনার উইথ অনুযায়ী */
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+}
+
+.swiper {
+  width: 100%;
+  border-radius: 20px; /* ছবির মতো রাউন্ডেড কর্নার */
+  overflow: hidden;
+}
+
+/* স্লাইডার বক্স (ডার্ক ব্লু ব্যাকগ্রাউন্ড) */
+.slider-box {
+  background-color: #212844; /* Figma ডার্ক ব্লু কালার */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 60px 80px;
+  min-height: 380px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* টেক্সট কন্টেন্ট */
+.slider-content {
+  color: #ffffff;
+  z-index: 2;
+  max-width: 50%;
+}
+
+.sub-title {
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
+}
+
+.main-title {
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.offer-text {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+
+/* ইমেজ কন্টেন্ট */
+.slider-image {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  z-index: 2;
+}
+
+.slider-image img {
+  max-height: 320px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3)); /* ইমেজের শ্যাডো */
+}
+
+/* --- Change Icons (Arrows) Styles --- */
+.swiper-button-next, 
+.swiper-button-prev {
+  background: #ffffff; /* সাদা গোল বাটন */
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.swiper-button-next:hover, 
+.swiper-button-prev:hover {
+  background: #f1f7f9;
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* Swiper এর ডিফল্ট অ্যারো হাইড করে ফন্ট-অসাম আইকন দেখানো */
+.swiper-button-next::after, 
+.swiper-button-prev::after {
+  display: none;
+}
+
+.swiper-button-next i, 
+.swiper-button-prev i {
+  color: #00a0e3; /* আইকন কালার */
+  font-size: 20px;
+}
+
+/* আইকন পজিশন ছবির মতো */
+.swiper-button-next {
+  right: 15px !important;
+}
+
+.swiper-button-prev {
+  left: 15px !important;
+}
+
+/* --- Pagination / Dots (ছবির মতো স্টাইল) --- */
+.swiper-pagination-bullets {
+  bottom: 40px !important;
+  left: 80px !important;
+  text-align: left !important;
+  width: auto !important;
+}
+
+.swiper-pagination-bullet {
+  background: #ffffff !important;
+  opacity: 0.4;
+  width: 8px;
+  height: 8px;
+  margin: 0 5px !important;
+}
+
+.swiper-pagination-bullet-active {
+  opacity: 1;
+  width: 25px !important; /* একটিভ ডট লম্বা হবে */
+  border-radius: 5px !important;
+}
+/* প্যাজিনেশন ডটস স্টাইল */
+.custom-dots {
+  position: absolute !important;
+  bottom: 40px !important; /* নিচ থেকে দূরত্ব */
+  left: 0 !important;      /* বাম পাশে এলাইনমেন্ট */
+  display: flex !important;
+  gap: 8px;
+  width: auto !important;   /* পুরো উইথ নিবে না */
+  z-index: 100 !important;  /* যেন ইমেজের নিচে চাপা না পড়ে */
+}
+
+/* প্রতিটি সাধারণ ডট */
+.swiper-pagination-bullet {
+  background: #ffffff !important;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  opacity: 0.5 !important; /* ইন-অ্যাক্টিভ ডট হালকা দেখাবে */
+  transition: all 0.3s ease;
+}
+
+/* ছবির মতো অ্যাক্টিভ ডট (লম্বা পিল শেইপ) */
+.swiper-pagination-bullet-active {
+  width: 28px !important; /* অ্যাক্টিভ ডট লম্বা হবে */
+  border-radius: 10px !important;
+  opacity: 1 !important;    /* অ্যাক্টিভ ডট উজ্জ্বল দেখাবে */
+  background: #ffffff !important;
+}
+/* --- Mobile Responsive --- */
+@media (max-width: 768px) {
+  .slider-box {
+    flex-direction: column;
+    padding: 40px 30px;
+    text-align: center;
+    min-height: auto;
+  }
+  
+  .slider-content {
+    max-width: 100%;
+    margin-bottom: 30px;
+  }
+  
+  .main-title {
+    font-size: 32px;
+  }
+  
+  .slider-image img {
+    max-height: 220px;
+  }
+
+  .swiper-pagination-bullets {
+    left: 50% !important;
+    transform: translateX(-50%);
+    text-align: center !important;
+  }
+  
+  .swiper-button-next, 
+  .swiper-button-prev {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+
+
+
+/* Product Section Styling */
+.product-section {
+  padding: 40px 0;
+  background-color: #fff;
+}
+
+.product-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-header {
+    display: flex;
+    align-items: center; /* টেক্সটগুলোকে সোজা রাখার জন্য */
+    justify-content: space-between;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 8px;
+    margin-bottom: 25px;
+    width: 100%;
+    position: relative; /* বর্ডারের জন্য */
+}
+
+/* ভিউ অল বাটন স্টাইল */
+.view-all {
+    text-decoration: none;
+    color: #444;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: color 0.3s;
+}
+
+.view-all:hover {
+    color: #00a0e3; /* হোভার করলে নীল হবে */
+}
+
+/* নীল আন্ডারলাইনটি শুধু টাইটেলের নিচে রাখার জন্য */
+.section-title::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -1px; /* মেইন বর্ডারের একদম উপরে বসবে */
+    width: 100%;
+    height: 3px;
+    background-color: #00a0e3;
+    z-index: 1;
+}
+/* section-header কে container padding থেকে বের করা */
+.product-section .section-header {
+  margin-right: -20px;   /* container-এর right padding cancel */
+}
+
+/* border line-ও পুরো width নেবে */
+.product-section .section-header::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: calc(100% + 20px);
+}
+
+
+.section-title {
+  font-size: 20px;
+  color: #444;
+  position: relative;
+  padding-bottom: 8px;
+}
+
+
+.section-title span {
+  color: #00a0e3;
+}
+
+
+
+
+
+
+
+
+
+/* Product Grid */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* এক লাইনে ৫টি কার্ড */
+  gap: 20px;
+}
+
+.product-card {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 15px;
+  position: relative;
+  transition: transform 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  border-color: #00a0e3;
+}
+
+.discount-badge {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  background: #00a0e3;
+  color: white;
+  padding: 15px 8px;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 0 0 8px 8px;
+  z-index: 1;
+}
+
+.product-image {
+  width: 100%;
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.product-image img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.product-info {
+  background: #fff;
+  padding: 10px;
+  border-radius: 0 0 12px 12px;
+  border-top: 1px solid #eee;
+}
+
+.p-name {
+  display: -webkit-box;
+  -webkit-line-clamp: 1; /* কয়টি লাইন দেখাতে চান */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-clamp: 1; /* এটি স্ট্যান্ডার্ড প্রপার্টি যা ওয়ার্নিংটি দূর করবে */
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.price-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 5px;
+}
+
+.current-price {
+  font-size: 16px;
+  font-weight: bold;
+  color: #000;
+}
+
+.old-price {
+  font-size: 13px;
+  color: #999;
+  text-decoration: line-through;
+}
+
+.save-text {
+  font-size: 12px;
+  color: #2e7d32; /* গ্রিন কালার 'Save' টেক্সট */
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .product-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .product-grid { 
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 10px;
+  }
+}
+
+/* Desktop / Laptop only */
+@media (min-width: 769px) {
+  .product-section .section-header {
+    margin-right: -20px;   /* right padding পুরো cancel */
+  }
+}

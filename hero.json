@@ -1,0 +1,20 @@
+[
+  {
+    "subtitle": "Freshness ",
+    "offer": "Get 30% Cashback",
+    "id": "cat1",
+    "type": "product",
+    "bgColor": "#212844",
+    "title": "PREMIUM FRUITS.",
+    "image": "https://res.cloudinary.com/dmqnuzexg/image/upload/c_fill,w_268,h_270,f_auto,q_auto/v1766211735/f8nduyr8zpzjwzn5za0m.png"
+  },
+  {
+    "title": "PREMIUM FRUITS",
+    "subtitle": "Delivered to your Door",
+    "type": "category",
+    "offer": "Get 80% Cashback",
+    "bgColor": "#0a4a44",
+    "image": "https://res.cloudinary.com/dmqnuzexg/image/upload/c_fill,w_268,h_270,f_auto,q_auto/v1766211822/olg8mdqrogyoekbwlt00.png",
+    "id": "prod_099"
+  }
+]
