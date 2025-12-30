@@ -1,4 +1,4 @@
-name: Firebase → JSON Sync (Low Read)
+name: Sync products & hero
 
 on:
   schedule:
