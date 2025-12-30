@@ -1,0 +1,159 @@
+.add-address-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 22px;
+  border: 1.5px solid #e91e63;
+  background: #fff;
+  color: #e91e63;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.add-address-btn span {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.add-address-btn:hover {
+  background: #e91e63;
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(233, 30, 99, 0.25);
+}
+
+@media (max-width: 480px) {
+  .add-address-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+
+/* ড্রপডাউনটি যেন পুরো জায়গা জুড়ে থাকে */
+/* ড্রপডাউন এবং ইনপুট ফিল্ডের স্টাইল */
+#addrDistrict, #addrThana {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    background-color: #fff;
+    color: #333;
+    display: block;
+    margin-top: 5px;
+    height: 45px; /* এটি নিশ্চিত করবে ড্রপডাউনটি চ্যাপ্টা হয়ে যাবে না */
+    appearance: auto; /* ড্রপডাউন অ্যারো দেখানোর জন্য */
+}
+
+#addrDistrict:focus, #addrThana:focus {
+    outline: none;
+    border-color: #e91e63;
+    box-shadow: 0 0 0 3px rgba(233,30,99,.15);
+}
+
+
+/* ================= ADDRESS CARD ================= */
+.address-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 18px;
+}
+
+.address-card {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+  position: relative;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.address-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px rgba(0,0,0,0.08);
+}
+
+/* Default highlight */
+.address-card.default {
+  border-color: #ff2f80;
+}
+
+/* Top label */
+.address-top {
+  margin-bottom: 10px;
+}
+
+.address-label {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: #ffe6f0;
+  color: #e91e63;
+}
+
+/* Address text */
+.address-body {
+  margin-bottom: 16px;
+}
+
+.address-line {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: #222;
+}
+
+.address-sub {
+  font-size: 14px;
+  color: #666;
+}
+
+/* Actions */
+.address-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.address-actions button {
+  flex: 1;
+  border-radius: 10px;
+  padding: 8px 10px;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: background .2s ease;
+}
+
+.btn-edit {
+  background: #eef3ff;
+  color: #2962ff;
+}
+
+.btn-edit:hover {
+  background: #dfe7ff;
+}
+
+.btn-delete {
+  background: #fff0f0;
+  color: #e53935;
+}
+
+.btn-delete:hover {
+  background: #ffe0e0;
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .address-list {
+    grid-template-columns: 1fr;
+  }
+}
