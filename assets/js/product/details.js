@@ -69,7 +69,7 @@ async function loadProductDetails() {
   }
 
   try {
-    const res = await fetch("/assets/json/products.json");
+    const res = await fetch("./assets/json/products.json");
     const products = await res.json();
 
     PRODUCT = products.find(
@@ -431,3 +431,4 @@ const productId = new URLSearchParams(location.search).get("id");
 
 /* ---------- INIT ---------- */
 document.addEventListener("DOMContentLoaded", loadProductDetails);
+
