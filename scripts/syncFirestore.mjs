@@ -44,7 +44,6 @@ async function syncProducts() {
 
   console.log("Products synced:", products.length);
 }
-}
 
 /* ================= HERO ================= */
 async function syncHero() {
@@ -71,4 +70,5 @@ async function main() {
 }
 
 main();
+
 
