@@ -95,6 +95,43 @@ window.updateActiveClass = function (categoryText) {
       );
     });
 };
+
+
+/* ---------- DEFAULT CATEGORY ON PAGE LOAD ---------- */
+document.addEventListener("DOMContentLoaded", () => {
+  const params = new URLSearchParams(window.location.search);
+  const category = params.get("category");
+
+  // 🔹 যদি URL এ category না থাকে → All Categories / All Products
+  if (!category) {
+    if (typeof updateActiveClass === "function") {
+      updateActiveClass("All Categories");
+    }
+
+    if (typeof displayFilteredProducts === "function") {
+      displayFilteredProducts("all");
+    }
+
+    return;
+  }
+
+  // 🔹 যদি category থাকে
+  const decodedCategory = decodeURIComponent(category);
+
+  if (typeof updateActiveClass === "function") {
+    updateActiveClass(decodedCategory);
+  }
+
+  if (typeof displayFilteredProducts === "function") {
+    displayFilteredProducts(decodedCategory);
+  }
+});
+
+
+
+
+
+
 /* =========================
    HEADER SEARCH LOGIC
 ========================= */
@@ -123,3 +160,4 @@ searchInput?.addEventListener('keypress', (e) => {
     performSearch();
   }
 });
+
