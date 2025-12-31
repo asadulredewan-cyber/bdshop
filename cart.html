@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tong Ghor | Online Shopping</title>
+  <link rel="icon" type="image/x-icon" href="./assets/image/icon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="./assets/css/header.css">
+  <link rel="stylesheet" href="./assets/css/footer.css">
+  <link rel="stylesheet" href="./assets/css/auth-modal.css">
+  <link rel="stylesheet" href="./assets/css/cart.css">
+
+<body>
+
+  <header>
+    <div class="container">
+      <div class="left">
+        <button class="hamburger-menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="name">
+          <a href="index.html" class="logo-link">
+            <img src="assets/image/logo.png" alt="Tong Ghor" class="site-logo" loading="eager">
+          </a>
+        </div>
+      </div>
+
+
+      <div class="center">
+
+
+        <div class="search-box">
+          <span class="icon-search"><i class="fa-solid fa-magnifying-glass"></i></span>
+          <input type="text" placeholder="Search essentials, groceries and more..." class="input-field">
+        </div>
+      </div>
+
+      <div class="right">
+        <div class="user-actions">
+          <div class="action-item" id="openLoginBtn" style="cursor: pointer;">
+            <i class="fa-regular fa-user icon-blue"></i>
+            <span>Sign Up/Sign In</span>
+          </div>
+
+
+          <div class="action-item cart-action" id="cartAction">
+            <span class="cart-badge" id="cartQtyBadge"></span>
+            <i class="fa-solid fa-cart-shopping icon-blue"></i>
+
+            <span>Cart</span>
+          </div>
+
+          <button class="mobile-search-btn" id="mobileSearchBtn">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+  </header>
+
+  <nav class="category-nav">
+    <div class="category-container" id="main-nav-cats">
+      <div class="category-item active" data-cat="all">All Categories</div>
+      <div class="category-item" data-cat="premium-fruits">Premium Fruits</div>
+      <div class="category-item" data-cat="home-kitchen">Home & Kitchen</div>
+      <div class="category-item" data-cat="fashion">Fashion</div>
+      <div class="category-item" data-cat="electronics">Electronics</div>
+      <div class="category-item" data-cat="beauty">Beauty</div>
+      <div class="category-item" data-cat="home-improvement">Home Improvement</div>
+      <div class="category-item" data-cat="sports">Sports, Toys & Luggage</div>
+    </div>
+
+  </nav>
+
+
+
+
+  <div class="cart-page">
+
+    <!-- LEFT + RIGHT WRAPPER -->
+    <div class="cart-layout">
+
+      <!-- ========== LEFT : CART LIST ========== -->
+      <div class="cart-left">
+
+        <!-- Cart Header -->
+        <div class="cart-header">
+          <h2 class="cart-title">Cart List</h2>
+
+          <div class="cart-header-actions">
+            <label class="select-all">
+              <input type="checkbox" id="selectAllCart">
+              <span>Select all (<span id="cartItemCount">0</span> items)</span>
+            </label>
+
+
+            <button class="cart-delete-selected" id="deleteSelected">
+              Delete
+            </button>
+          </div>
+        </div>
+
+
+        <!-- ================= CART ITEMS ================= -->
+        <div class="cart-items" id="cartItems">
+
+          <!-- ===== SINGLE CART ITEM ===== -->
+
+          <!-- ===== / SINGLE CART ITEM ===== -->
+
+        </div>
+        <!-- ================= / CART ITEMS ================= -->
+
+      </div>
+      <!-- ========== / LEFT ========== -->
+
+
+      <!-- ========== RIGHT : ORDER SUMMARY ========== -->
+      <div class="cart-right">
+
+        <div class="order-summary">
+          <h3 class="summary-title">Order Summary:</h3>
+
+          <div class="summary-row">
+            <span>Product Price:</span>
+            <span id="summarySubtotal">৳ 0</span>
+          </div>
+
+          <div class="summary-row total">
+            <span>Total Payment:</span>
+            <span id="summaryTotal">৳ 0</span>
+          </div>
+
+          <button class="checkout-btn" id="checkoutSelectedBtn">
+            Checkout
+          </button>
+
+
+          <div class="payment-methods">
+            <p>We Accept</p>
+            <div class="payment-icons">
+              <span>Cash on Delivery</span>
+              <span>bKash</span>
+              <span>Rocket</span>
+              <span>Nogod</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- ========== / RIGHT ========== -->
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="auth-overlay">
+    <div class="auth-modal">
+      <div class="auth-close">×</div>
+
+      <div id="auth-status" class="status-container" style="display: none;">
+        <span class="status-icon">⚠</span>
+        <span id="status-message"></span>
+      </div>
+
+      <div class="auth-header">
+        <h2 id="login-title" class="title-login active">Sign In</h2>
+        <h2 id="signup-title" class="title-signup">Sign Up</h2>
+      </div>
+
+      <div class="auth-illustration"></div>
+
+      <div id="login-body" class="auth-body login-body active">
+        <div id="forgot-password-box" style="display: none;">
+          <label>Enter your email to reset password<span>*</span></label>
+          <div class="input-box">
+            <i class="fa-solid fa-envelope icon"></i>
+            <input type="email" id="reset-email" placeholder="example@mail.com">
+          </div>
+          <button class="btn" onclick="handlePasswordReset()">Send Reset Link</button>
+          <p style="text-align: center; margin-top: 15px; font-size: 13px;">
+            Back to <span class="forgot" onclick="hideForgotBox()">Sign In</span>
+          </p>
+        </div>
+        <label>Email / Phone Number<span> <span>*</span></span></label>
+        <div class="input-box">
+          <span class="icon">👤</span>
+          <input type="text" id="login-email" placeholder="Email / Phone Number">
+        </div>
+
+        <label>Password<span><span>*</span></span></label>
+        <div class="input-box">
+          <i class="fas fa-lock icon"></i>
+          <input type="password" id="login-pass" placeholder="Password">
+          <span class="forgot" onclick="handleForgotPassword()" style="cursor: pointer; color: #e91e63;">Forgot?</span>
+        </div>
+
+        <button id="main-login-btn" class="btn" onclick="handleSignIn()">Sign In</button>
+
+        <div class="google-btn" id="google-login" onclick="handleGoogleLogin()">
+          <img src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png" alt="google logo">
+          <span>Sign in with Google</span>
+        </div>
+
+        <p class="switch-text">
+          New to bdshops? <span id="to-signup" class="switch-to-signup"
+            style="color: #e91e63; cursor: pointer; font-weight: bold;">Register</span>
+        </p>
+      </div>
+
+      <div id="signup-body" class="auth-body signup-body">
+        <div class="row">
+          <div class="input-box">
+            <input type="text" id="reg-fname" placeholder="First Name">
+          </div>
+          <div class="input-box">
+            <input type="text" id="reg-lname" placeholder="Last Name">
+          </div>
+        </div>
+        <div class="input-box">
+          <input type="text" id="reg-mobile" placeholder="Mobile Number">
+        </div>
+        <div class="input-box">
+          <input type="email" id="reg-email" placeholder="Email">
+        </div>
+        <div class="input-box">
+          <input type="password" id="reg-pass" placeholder="Password">
+        </div>
+
+        <button class="btn" onclick="handleSignup()">Create Account</button>
+
+        <p class="switch-text">
+          Already have an account?
+          <span id="to-login" class="switch-to-login" style="color: #e91e63; cursor: pointer; font-weight: bold;">Sign
+            In</span>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="delete-modal-overlay" id="deleteModal" style="display: none;">
+    <div class="delete-modal">
+      <div class="modal-icon"><i class="fa-solid fa-trash-can"></i></div>
+      <h3>Are you sure?</h3>
+      <p id="deleteModalText">Do you really want to remove this item from your cart?</p>
+
+      <div class="delete-modal-actions">
+        <button class="btn-cancel" id="cancelDelete">No, Keep it</button>
+        <button class="btn-delete" id="confirmDelete">Yes, Delete</button>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+  <footer>
+    <div class="footer-container">
+
+
+      <!-- Brand & Contact -->
+      <div class="footer-col">
+        <h2 class="footer-logo">Tong Ghor</h2>
+
+        <div class="footer-contact">
+          <p>Contact Us</p>
+          <p>WhatsApp<br><span>+1 202-918-2132</span></p>
+          <p>Call Us<br><span>+1 202-918-2132</span></p>
+        </div>
+
+        <div class="footer-apps">
+          <img src="assets/images/appstore.png" alt="App Store">
+          <img src="assets/images/playstore.png" alt="Google Play">
+        </div>
+      </div>
+
+      <!-- Categories -->
+      <div class="footer-col">
+        <h4>Most Popular Categories</h4>
+        <ul>
+          <li>Staples</li>
+          <li>Beverages</li>
+          <li>Personal Care</li>
+          <li>Home Care</li>
+          <li>Baby Care</li>
+          <li>Vegetables & Fruits</li>
+          <li>Snacks & Foods</li>
+          <li>Dairy & Bakery</li>
+        </ul>
+      </div>
+
+      <!-- Customer Services -->
+      <div class="footer-col">
+        <h4>Customer Services</h4>
+        <ul>
+          <li>About Us</li>
+          <li>Terms & Conditions</li>
+          <li>FAQ</li>
+          <li>Privacy Policy</li>
+          <li>E-waste Policy</li>
+          <li>Cancellation & Return Policy</li>
+        </ul>
+      </div>
+
+
+
+      <div class="footer-bottom">
+        © 2022 All rights reserved. Reliance Retail Ltd.
+      </div>
+    </div>
+  </footer>
+
+
+  <script type="module" src="assets/js/core/firebase.js"></script>
+  <script type="module" src="./assets/js/cart/atuhc.js"></script>
+  <script type="module" src="./assets/js/cart/cart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script type="module" src="./assets/js/core/login.js"></script>
+  <script type="module" src="./assets/js/utils/auth-modal.js"></script>
+  <script type="module" src="./assets/js/header/header-nav.js"></script>
+  <script type="module" src="./assets/js/header/header-cart.js"></script>
+
+
+</body>
+
+</html>

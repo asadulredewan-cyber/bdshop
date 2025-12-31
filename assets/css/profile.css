@@ -1,0 +1,507 @@
+/* =====================================================
+   ACCOUNT PAGE — FULL CSS (DESKTOP + MOBILE)
+   Scope: Account Page, Side Menu, Modals
+===================================================== */
+
+/* ================= BASE ================= */
+.account-page {
+  max-width: 1200px;
+  margin: 40px auto;
+  display: flex;
+  gap: 30px;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  position: relative;
+}
+
+/* ================= SIDEBAR ================= */
+.account-sidebar {
+  width: 260px;
+  background: #fff;
+  border-right: 1px solid #eee;
+  padding: 20px;
+}
+
+.hello-text {
+  color: #888;
+  margin-bottom: 6px;
+}
+
+#sidebarFullName {
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.account-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.account-menu li {
+  padding: 12px 0;
+  cursor: pointer;
+  color: #444;
+  font-size: 15px;
+}
+
+.account-menu li.active {
+  color: #e91e63;
+  font-weight: 600;
+}
+
+.account-menu .divider {
+  border-top: 1px solid #eee;
+  margin: 16px 0;
+}
+
+/* ================= CONTENT ================= */
+.account-content {
+  flex: 1;
+}
+
+.page-title {
+  font-size: 26px;
+  margin-bottom: 30px;
+}
+
+/* ================= PROFILE GRID ================= */
+.profile-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.profile-card {
+  border: 1px solid #eee;
+  border-radius: 14px;
+  padding: 22px;
+  background: #fff;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.card-header h4 {
+  font-size: 16px;
+}
+
+.edit-btn {
+  font-size: 14px;
+  color: #2979ff;
+  cursor: pointer;
+}
+
+.profile-email {
+  color: #666;
+  margin-bottom: 6px;
+}
+
+.profile-name {
+  font-weight: 600;
+}
+
+/* ================= ORDERS ================= */
+.orders-section h3 {
+  margin-bottom: 14px;
+}
+
+.orders-table {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  font-weight: 600;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+/* ================= MOBILE HEADER ================= */
+.sidebar-header {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border-bottom: 1px solid #eee;
+  background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.sidebar-title {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.sidebar-toggle {
+  font-size: 22px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* =====================================================
+   MOBILE DRAWER MODE
+===================================================== */
+@media (max-width: 768px) {
+
+  .account-page {
+    display: block;
+    margin: 0;
+  }
+
+  .sidebar-header {
+    display: flex;
+  }
+
+  .account-sidebar {
+    position: fixed;
+    top: 0;
+    left: -280px;
+    height: 100vh;
+    width: 260px;
+    background: #fff;
+    z-index: 1001;
+    transition: left 0.3s ease;
+    box-shadow: 2px 0 20px rgba(0,0,0,0.15);
+  }
+
+  .account-sidebar.active {
+    left: 0;
+  }
+
+  /* overlay */
+  body.drawer-open::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    z-index: 1000;
+  }
+
+  .account-content {
+    padding: 16px;
+  }
+
+  .profile-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .orders-table {
+   display: grid;  
+  }
+}
+
+/* =====================================================
+   LOGOUT MODAL
+===================================================== */
+.logout-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.logout-modal-overlay.active {
+  display: flex;
+}
+
+.logout-modal {
+  background: #fff;
+  width: 90%;
+  max-width: 360px;
+  padding: 24px;
+  border-radius: 16px;
+  text-align: center;
+  animation: scaleIn 0.25s ease;
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.logout-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.btn-logout {
+  flex: 1;
+  background: #e91e63;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.btn-cancel {
+  flex: 1;
+  background: #eee;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* =====================================================
+   PROFILE EDIT MODAL
+===================================================== */
+.profile-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(4px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.profile-modal-overlay.active {
+  display: flex;
+}
+
+.profile-modal {
+  background: #fff;
+  width: 92%;
+  max-width: 460px;
+  padding: 28px;
+  border-radius: 18px;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.25);
+  animation: modalScale 0.25s ease;
+}
+
+@keyframes modalScale {
+  from { transform: scale(0.92); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.profile-modal h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 22px;
+}
+
+.profile-modal label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #555;
+  margin-top: 14px;
+  display: block;
+}
+
+.profile-modal input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+.profile-modal input:focus {
+  outline: none;
+  border-color: #e91e63;
+  box-shadow: 0 0 0 3px rgba(233,30,99,.15);
+}
+
+.profile-modal input[disabled] {
+  background: #f5f5f5;
+  color: #777;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 26px;
+}
+
+.btn-save {
+  background: linear-gradient(135deg,#e91e63,#ff4081);
+  color: #fff;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-save:hover {
+  box-shadow: 0 10px 24px rgba(233,30,99,.45);
+}
+
+/* ================= MOBILE MODAL ================= */
+@media (max-width: 480px) {
+  .profile-modal {
+    padding: 22px 18px;
+    border-radius: 14px;
+  }
+}
+/* ================= SIDEBAR CLOSE ICON ================= */
+.sidebar-close {
+  display: none;
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: none;
+  border: none;
+  font-size: 22px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #333;
+  z-index: 1100;
+}
+
+.sidebar-close:hover {
+  color: #e91e63;
+}
+
+/* show only on mobile */
+@media (max-width: 768px) {
+  .sidebar-close {
+    display: block;
+  }
+}
+/* ================= ACCOUNT ACTION BUTTONS ================= */
+
+/* common button style */
+#changePassword,
+#logoutBtn {
+  margin-top: 10px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+/* Change Password – neutral primary */
+#changePassword {
+  background: #f5f7fa;
+  color: #333;
+  border: 1px solid #e0e0e0;
+}
+
+#changePassword:hover {
+  background: #eaeef5;
+}
+
+/* Logout – danger button */
+#logoutBtn {
+  background: #ffe9ee;
+  color: #e91e63;
+  border: 1px solid #f3b6c6;
+}
+
+#logoutBtn:hover {
+  background: #ffd6df;
+}
+
+/* mobile touch feedback */
+#changePassword:active,
+#logoutBtn:active {
+  transform: scale(0.97);
+}
+
+
+
+.orders-header,
+.orders-row {
+  display: grid;
+  grid-template-columns:
+    1.2fr   /* Order No */
+    1.2fr   /* Date */
+    2.5fr   /* Items */
+    0.8fr   /* Qty */
+    1fr     /* Amount */
+    1.2fr   /* Color/Size */
+    1fr     /* Status */
+    1fr;    /* Actions */
+
+  align-items: center;
+  gap: 10px;
+}
+
+.orders-row {
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.order-item-box {
+  background: #f1f5f9;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.qty-box,
+.color-size-box {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+
+/* ================= ORDER ACTION BUTTONS ================= */
+
+/* Cancel button */
+.cancel-btn {
+  background: #ffe9ee;
+  color: #e91e63;
+  border: 1px solid #f3b6c6;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cancel-btn:hover {
+  background: #ffd6df;
+}
+
+/* Return button */
+.return-btn {
+  background: #e8f0ff;
+  color: #2962ff;
+  border: 1px solid #b3c7ff;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.return-btn:hover {
+  background: #dbe6ff;
+}
+
+/* Disabled return (after 7 days) */
+.return-btn.disabled {
+  opacity: 0.45;
+  pointer-events: none;
+  filter: blur(0.6px);
+}
+
+/* Status colors */
+.status.pending { color: #f59e0b; font-weight: 600; }
+.status.confirm { color: #2563eb; font-weight: 600; }
+.status.shipped { color: #7c3aed; font-weight: 600; }
+.status.delivered { color: #16a34a; font-weight: 600; }
+.status.cancelled { color: #dc2626; font-weight: 600; }
+.status.returned { color: #0f766e; font-weight: 600; }
