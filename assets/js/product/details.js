@@ -129,7 +129,7 @@ function renderProduct() {
 
   /* ---------- MAIN IMAGE RESOLUTION ---------- */
   const baseImage = PRODUCT.image;
-  const colorImage = colorData.image || null;
+  
 
   if (!CURRENT_IMAGE) {
     // first page load
@@ -281,7 +281,7 @@ const sizes = Object.keys(
 
 SELECTED.size = sizes[0] || null;
 
-  SELECTED.size = sizes[0] || null;
+ 
 
   // 🔥 exact rule you asked
   CURRENT_IMAGE =
@@ -426,9 +426,10 @@ window.scrollThumbs = function (dir) {
   }
 };
 
-const productId = new URLSearchParams(location.search).get("id");
+
 
 
 /* ---------- INIT ---------- */
 document.addEventListener("DOMContentLoaded", loadProductDetails);
+
 
