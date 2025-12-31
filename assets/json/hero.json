@@ -1,1 +1,40 @@
-[]
+[
+  {
+    "id": "",
+    "title": "tit",
+    "subtitle": "",
+    "offer": "",
+    "image": "",
+    "bgColor": "",
+    "type": "",
+    "meta": {
+      "createdAt": {
+        "_seconds": 1767164776,
+        "_nanoseconds": 83000000
+      },
+      "updatedAt": {
+        "_seconds": 1767164776,
+        "_nanoseconds": 83000000
+      }
+    }
+  },
+  {
+    "id": "1",
+    "title": "BIG OFFER",
+    "subtitle": "COME FAST BUY FAST",
+    "offer": "60% discount",
+    "image": "https://res.cloudinary.com/dmqnuzexg/image/upload/v1766851945/gw2olvw2lttgig3mckns.jpg",
+    "bgColor": "#E0998B",
+    "type": "product",
+    "meta": {
+      "createdAt": {
+        "_seconds": 1767116804,
+        "_nanoseconds": 265000000
+      },
+      "updatedAt": {
+        "_seconds": 1767116804,
+        "_nanoseconds": 265000000
+      }
+    }
+  }
+]
