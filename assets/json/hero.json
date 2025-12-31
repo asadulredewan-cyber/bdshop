@@ -1,30 +1,20 @@
 [
   {
-    "title": "PREMIUM FRUITS.",
-    "image": "https://res.cloudinary.com/dmqnuzexg/image/upload/c_fill,w_268,h_270,f_auto,q_auto/v1766211822/olg8mdqrogyoekbwlt00.png",
-    "subtitle": "Freshness ",
-    "offer": "Get 30% Cashback",
-    "type": "product",
-    "id": "cat1",
-    "bgColor": "#212844"
-    
+    "title": "up commecing",
+    "offer": "60% discount",
+    "image": "https://res.cloudinary.com/dmqnuzexg/image/upload/v1766851945/gw2olvw2lttgig3mckns.jpg",
+    "bgColor": "black",
+    "subtitle": "d",
+    "id": "1",
+    "type": "product"
   },
   {
-    "image": "https://res.cloudinary.com/dmqnuzexg/image/upload/c_fill,w_268,h_270,f_auto,q_auto/v1766211822/olg8mdqrogyoekbwlt00.png",
+    "title": "BIG OFFER",
+    "subtitle": "COME FAST BUY FAST",
+    "offer": "60% discount",
+    "image": "https://res.cloudinary.com/dmqnuzexg/image/upload/v1766851945/gw2olvw2lttgig3mckns.jpg",
+    "bgColor": "#E0998B",
     "type": "product",
-    "title": "check",
-    "subtitle": "Delivered ",
-    "bgColor": "#0a4a44",
-    "offer": "Get 80% Cashback",
-    "id": "prod_099"
-  },
-    {
-    "image": "https://res.cloudinary.com/dmqnuzexg/image/upload/c_fill,w_268,h_270,f_auto,q_auto/v1766211822/olg8mdqrogyoekbwlt00.png",
-    "type": "product",
-    "title": "asadk",
-    "subtitle": "Delivered ",
-    "bgColor": "#0a4a44",
-    "offer": "Get 80% Cashback",
-    "id": "prod_099"
+    "id": "1"
   }
 ]
