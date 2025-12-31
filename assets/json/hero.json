@@ -1,0 +1,30 @@
+[
+  {
+    "title": "PREMIUM FRUITS.",
+    "image": "https://res.cloudinary.com/dmqnuzexg/image/upload/c_fill,w_268,h_270,f_auto,q_auto/v1766211822/olg8mdqrogyoekbwlt00.png",
+    "subtitle": "Freshness ",
+    "offer": "Get 30% Cashback",
+    "type": "product",
+    "id": "1",
+    "bgColor": "#212844"
+    
+  },
+  {
+    "image": "https://res.cloudinary.com/dmqnuzexg/image/upload/c_fill,w_268,h_270,f_auto,q_auto/v1766211822/olg8mdqrogyoekbwlt00.png",
+    "type": "category",
+    "title": "check",
+    "subtitle": "Delivered ",
+    "bgColor": "#0a4a44",
+    "offer": "Get 80% Cashback",
+    "id": "Premium Fruits"
+  },
+    {
+    "image": "https://res.cloudinary.com/dmqnuzexg/image/upload/c_fill,w_268,h_270,f_auto,q_auto/v1766211822/olg8mdqrogyoekbwlt00.png",
+    "type": "product",
+    "title": "asadk",
+    "subtitle": "Delivered ",
+    "bgColor": "#0a4a44",
+    "offer": "Get 80% Cashback",
+    "id": "2"
+  }
+]
