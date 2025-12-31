@@ -66,7 +66,29 @@
         }
       }
     },
-    "price": 59
+    "price": 590
+  },
+  {
+    "id": 3,
+    "title": "r",
+    "category": "g",
+    "price": 5,
+    "oldPrice": 10,
+    "image": "",
+    "gallery": [],
+    "colorVariants": {},
+    "specifications": []
+  },
+  {
+    "id": 3,
+    "title": "tor",
+    "category": "fashon",
+    "price": 500,
+    "oldPrice": 900,
+    "image": "",
+    "gallery": [],
+    "colorVariants": {},
+    "specifications": []
   },
   {
     "id": 3,
