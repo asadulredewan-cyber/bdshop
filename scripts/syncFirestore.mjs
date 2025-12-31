@@ -1,74 +1,40 @@
-import admin from "firebase-admin";
-import fs from "fs";
 
-/* ================= FIREBASE INIT ================= */
+import fs from "fs";
+import admin from "firebase-admin";
+
+// 🔐 Service Account (GitHub Secret থেকে)
+const serviceAccount = JSON.parse(
+  Buffer.from(process.env.FIREBASE_SERVICE_ACCOUNT, "base64").toString("utf8")
+);
+
 admin.initializeApp({
-  credential: admin.credential.cert({
-    projectId: process.env.FIREBASE_PROJECT_ID,
-    clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
-    privateKey: process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, "\n")
-  })
+  credential: admin.credential.cert(serviceAccount)
 });
 
 const db = admin.firestore();
 
 /* ================= HELPERS ================= */
-async function getLastSyncTime() {
-  const snap = await db.doc("meta/products_sync").get();
-  return snap.exists ? snap.data().lastUpdatedAt?.toMillis() || 0 : 0;
-}
+async function exportCollection(colName, outputPath) {
+  const snapshot = await db.collection(colName).get();
+  const data = [];
 
-async function setLastSyncTime() {
-  await db.doc("meta/products_sync").set(
-    { lastUpdatedAt: admin.firestore.FieldValue.serverTimestamp() },
-    { merge: true }
-  );
-}
-
-function writeJSON(path, data) {
-  fs.writeFileSync(path, JSON.stringify(data, null, 2));
-}
-
-/* ================= PRODUCTS ================= */
-async function syncProducts() {
-  const snap = await db.collection("products").get(); // orderBy বাদ দিলাম
-
-  const products = snap.docs.map(d => {
-    return { id: d.id, ...d.data() }; // meta বাদ না দিলে সব field JSON-এ যাবে
+  snapshot.forEach(doc => {
+    data.push(doc.data());
   });
 
-  // 🔒 Stable order by id
-  products.sort((a, b) => a.id.localeCompare(b.id));
-
-  writeJSON("./assets/json/products.json", products);
-
-  console.log("Products synced:", products.length);
-}
-
-/* ================= HERO ================= */
-async function syncHero() {
-  const snap = await db.collection("hero").get();
-  const heroes = snap.docs.map(d => {
-    const { meta, ...rest } = d.data();
-    return rest;
-  });
-
-  writeJSON("./assets/json/hero.json", heroes);
-  console.log("Hero synced:", heroes.length);
+  fs.writeFileSync(outputPath, JSON.stringify(data, null, 2));
+  console.log(`✔ ${colName} → ${outputPath}`);
 }
 
 /* ================= RUN ================= */
-async function main() {
+(async () => {
   try {
-    await syncProducts();
-    await syncHero();
-    await setLastSyncTime();
-    console.log("All sync complete ✅");
+    await exportCollection("hero", "assets/json/hero.json");
+    await exportCollection("products", "assets/json/products.json");
+
+    console.log("✅ Firestore sync completed");
   } catch (err) {
-    console.error("Sync failed:", err);
+    console.error("❌ Sync failed:", err);
+    process.exit(1);
   }
-}
-
-main();
-
-
+})();
