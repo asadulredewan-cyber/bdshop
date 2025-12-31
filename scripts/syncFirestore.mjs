@@ -31,37 +31,27 @@ function writeJSON(path, data) {
 
 /* ================= PRODUCTS ================= */
 async function syncProducts() {
-  const lastSync = await getLastSyncTime();
-
-  const latest = await db
+  const snap = await db
     .collection("products")
     .orderBy("meta.updatedAt", "desc")
-    .limit(1)
     .get();
 
-  if (!latest.docs.length) return;
-
-  const latestUpdate =
-    latest.docs[0].data().meta?.updatedAt?.toMillis() || 0;
-
-  // ❌ No update → STOP (only 1 read used)
-  if (latestUpdate <= lastSync) {
-    console.log("No product changes");
-    return;
-  }
-
-  // ✅ Update found → full read
-  const snap = await db.collection("products").get();
   const products = snap.docs.map(d => {
     const { meta, ...rest } = d.data();
-    return rest;
+    return { id: d.id, ...rest };
   });
 
-  writeJSON("assets/json/products.json", products);
-  await setLastSyncTime();
+  // 🔒 Stable order
+  products.sort((a, b) => a.id.localeCompare(b.id));
+
+  fs.writeFileSync(
+    "./assets/json/products.json",
+    JSON.stringify(products, null, 2)
+  );
 
   console.log("Products synced:", products.length);
 }
+
 
 /* ================= HERO ================= */
 async function syncHero() {
@@ -71,10 +61,11 @@ async function syncHero() {
     return rest;
   });
 
-  writeJSON("assets/json/hero.json", heroes);
+  writeJSON("./assets/json/hero.json", heroes);
   console.log("Hero synced:", heroes.length);
 }
 
 /* ================= RUN ================= */
 await syncProducts();
 await syncHero();
+
