@@ -36,7 +36,6 @@
         "value": ""
       }
     ],
-    "price": 590,
     "colorVariants": {
       "Black": {
         "image": "https://res.cloudinary.com/dmqnuzexg/image/upload/v1766851939/n6tmiuxyveeml1d6cbgx.jpg",
@@ -66,14 +65,15 @@
           }
         }
       }
-    }
+    },
+    "price": 59
   },
   {
-    "id": 2,
-    "title": "",
-    "category": "",
-    "price": null,
-    "oldPrice": null,
+    "id": 3,
+    "title": "tor",
+    "category": "fashon",
+    "price": 500,
+    "oldPrice": 900,
     "image": "",
     "gallery": [],
     "colorVariants": {},
