@@ -11,7 +11,7 @@ let ALL_PRODUCTS = [];
 /* ================= LOAD PRODUCTS ================= */
 export async function loadProducts() {
   try {
-    const res = await fetch("/assets/json/products.json");
+    const res = await fetch("./assets/json/products.json");
     const data = await res.json();
 
     ALL_PRODUCTS = data;
@@ -102,5 +102,6 @@ function productCard(p) {
 
 /* ================= GLOBAL ================= */
 window.openProductPage = id => {
-  window.location.href = `/product.html?id=${id}`;
+  window.location.href = `./product.html?id=${id}`;
 };
+
