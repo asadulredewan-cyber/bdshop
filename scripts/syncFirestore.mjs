@@ -31,22 +31,19 @@ function writeJSON(path, data) {
 
 /* ================= PRODUCTS ================= */
 async function syncProducts() {
-  const snap = await db
-    .collection("products")
-    .orderBy("meta.updatedAt", "desc")
-    .get();
+  const snap = await db.collection("products").get(); // orderBy বাদ দিলাম
 
   const products = snap.docs.map(d => {
-    const { meta, ...rest } = d.data();
-    return { id: d.id, ...rest };
+    return { id: d.id, ...d.data() }; // meta বাদ না দিলে সব field JSON-এ যাবে
   });
 
-  // 🔒 Stable order
+  // 🔒 Stable order by id
   products.sort((a, b) => a.id.localeCompare(b.id));
 
   writeJSON("./assets/json/products.json", products);
 
   console.log("Products synced:", products.length);
+}
 }
 
 /* ================= HERO ================= */
@@ -74,3 +71,4 @@ async function main() {
 }
 
 main();
+
