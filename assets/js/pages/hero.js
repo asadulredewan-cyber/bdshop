@@ -3,7 +3,7 @@
 // ===== HERO LOADER =====
 export async function loadHero() {
   try {
-    const res = await fetch("/assets/json/hero.json");
+    const res = await fetch("./assets/json/hero.json");
     if (!res.ok) throw new Error("hero.json not found");
 
     const slides = await res.json();
@@ -76,9 +76,10 @@ function initSwiper() {
 // ===== HERO CLICK ACTION (GLOBAL SAFE) =====
 function handleHeroClick(type, id) {
   if (type === "category") {
-    window.location.href = `/index.html?category=${encodeURIComponent(id)}`;
+    window.location.href = `./index.html?category=${encodeURIComponent(id)}`;
   } 
   else if (type === "product") {
-    window.location.href = `/product.html?id=${id}`;
+    window.location.href = `./product.html?id=${id}`;
   }
 }
+
