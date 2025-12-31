@@ -1,40 +1,44 @@
+name: Firestore → JSON Sync
 
-import fs from "fs";
-import admin from "firebase-admin";
+on:
+  schedule:
+    - cron: "*/30 * * * *"   # every 30 minutes
+  workflow_dispatch:        # manual run option
 
-// 🔐 Service Account (GitHub Secret থেকে)
-const serviceAccount = JSON.parse(
-  Buffer.from(process.env.FIREBASE_SERVICE_ACCOUNT, "base64").toString("utf8")
-);
+jobs:
+  sync:
+    runs-on: ubuntu-latest
 
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount)
-});
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
 
-const db = admin.firestore();
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
 
-/* ================= HELPERS ================= */
-async function exportCollection(colName, outputPath) {
-  const snapshot = await db.collection(colName).get();
-  const data = [];
+      - name: Install dependencies
+        run: |
+          npm init -y
+          npm install firebase-admin
 
-  snapshot.forEach(doc => {
-    data.push(doc.data());
-  });
+      - name: Run Firestore sync
+        env:
+          FIREBASE_PROJECT_ID: ${{ secrets.FIREBASE_PROJECT_ID }}
+          FIREBASE_CLIENT_EMAIL: ${{ secrets.FIREBASE_CLIENT_EMAIL }}
+          FIREBASE_PRIVATE_KEY: ${{ secrets.FIREBASE_PRIVATE_KEY }}
+        run: |
+          node scripts/syncFirestore.mjs
 
-  fs.writeFileSync(outputPath, JSON.stringify(data, null, 2));
-  console.log(`✔ ${colName} → ${outputPath}`);
-}
-
-/* ================= RUN ================= */
-(async () => {
-  try {
-    await exportCollection("hero", "assets/json/hero.json");
-    await exportCollection("products", "assets/json/products.json");
-
-    console.log("✅ Firestore sync completed");
-  } catch (err) {
-    console.error("❌ Sync failed:", err);
-    process.exit(1);
-  }
-})();
+      - name: Commit & Push if changed
+        run: |
+          if [[ -n "$(git status --porcelain)" ]]; then
+            git config user.name "github-actions"
+            git config user.email "actions@github.com"
+            git add assets/json/*.json
+            git commit -m "chore: sync firestore data"
+            git push
+          else
+            echo "No changes detected"
+          fi
