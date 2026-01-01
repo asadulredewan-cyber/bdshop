@@ -1,1 +1,35 @@
-[]
+[
+  {
+    "price": 599,
+    "discount": "43% OFF",
+    "meta": {
+      "updatedAt": 1767293147017,
+      "createdAt": 1767292729091,
+      "source": "admin-panel"
+    },
+    "oldPrice": 1050,
+    "image": "",
+    "details": "<p>🚴‍♂️ Newfangled Smart Mobile Phone Holder – Waterproof & Secure Ride Companion! 📱</p><p>সাইকেল, বাইক বা মোটরসাইকেল চালানোর সময় মোবাইল সুরক্ষিত রাখুন স্টাইল ও স্মার্টনেসের সাথে!</p><p>Newfangled Universal Waterproof Bicycle Phone Holder আপনার আউটডোর রাইডকে করবে আরও নিরাপদ ও আরামদায়ক।</p><p>🔹 Product Details:</p><p>✔️ Type: Motorcycle / Bicycle Phone Holder</p><p>✔️ Model: Adjustable Waterproof Bicycle Phone Holder</p><p>✔️ Material: Durable ABS (Lightweight & Strong)</p><p>✔️ Features: Waterproof, Magnetic, Adjustable</p><p>✔️ Compatible: Universal – প্রায় সব স্মার্টফোনে ফিট করে</p><p>✔️ Gross Weight: 350g</p><p>✔️ Size (Outer): 193 × 99 × 25mm</p><p>✔️ Size (Inner): 173 × 82 × 8mm</p><p>✔️ Origin: China</p><p>✨ Key Benefits:</p><p>✅ Waterproof Design – পানি, ধুলো ও স্প্ল্যাশ থেকে ফোন সুরক্ষা</p><p>✅ Magnetic Secure Grip – ঝাঁকুনিতেও ফোন থাকবে শক্তভাবে আটকানো</p><p>✅ Adjustable Mount – হ্যান্ডেলে সহজে সেট করা যায়</p><p>✅ Smooth Touch Screen Access – রাইডের সময়ও স্ক্রিন ব্যবহার করা যায়</p><p>✅ Modern & Trendy Look – Sports & Outdoors-এর জন্য পারফেক্ট</p><p>🏍️ Navigation, Calls ও Music উপভোগ করুন হ্যান্ডস-ফ্রি ও সেফভাবে!</p>",
+    "productId": 1,
+    "specifications": [],
+    "id": "a3ae598c-f1d2-467f-8ffe-dbba90dc9c80",
+    "category": "Home Improvement",
+    "gallery": [
+      "https://res.cloudinary.com/dmqnuzexg/image/upload/v1767291306/606838418_122109959517144882_5485045152786991125_n_pwavgs.jpg",
+      "https://res.cloudinary.com/dmqnuzexg/image/upload/v1767291306/605717566_122109959883144882_943716105288318726_n_eyssw2.jpg",
+      "https://res.cloudinary.com/dmqnuzexg/image/upload/v1767291305/606604167_122109959601144882_2186911825333141237_n_pnqqy9.jpg",
+      "https://res.cloudinary.com/dmqnuzexg/image/upload/v1767291304/605713100_122109959679144882_1965626899589748193_n_qlkc3e.jpg"
+    ],
+    "title": "Newfangled Smart Mobile Phone Holder – Waterproof & Secure Ride Companion! 📱",
+    "colorVariants": {
+      "Black": {
+        "image": "",
+        "sizes": {}
+      },
+      "Silver": {
+        "image": "",
+        "sizes": {}
+      }
+    }
+  }
+]
