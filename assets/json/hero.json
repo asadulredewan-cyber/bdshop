@@ -4,17 +4,17 @@
     "title": "tit",
     "subtitle": "",
     "offer": "",
-    "image": "",
-    "bgColor": "",
     "type": "",
+    "image": "https://res.cloudinary.com/dmqnuzexg/image/upload/v1767209615/Screenshot_20251215_201345_fcb6wi.jpg",
+    "bgColor": "#8bee11",
     "meta": {
       "createdAt": {
         "_seconds": 1767164776,
         "_nanoseconds": 83000000
       },
       "updatedAt": {
-        "_seconds": 1767164776,
-        "_nanoseconds": 83000000
+        "_seconds": 1767265445,
+        "_nanoseconds": 347000000
       }
     }
   },
@@ -24,16 +24,16 @@
     "subtitle": "COME FAST BUY FAST",
     "offer": "60% discount",
     "image": "https://res.cloudinary.com/dmqnuzexg/image/upload/v1766851945/gw2olvw2lttgig3mckns.jpg",
-    "bgColor": "#E0998B",
     "type": "product",
+    "bgColor": "#101484",
     "meta": {
       "createdAt": {
         "_seconds": 1767116804,
         "_nanoseconds": 265000000
       },
       "updatedAt": {
-        "_seconds": 1767116804,
-        "_nanoseconds": 265000000
+        "_seconds": 1767264964,
+        "_nanoseconds": 237000000
       }
     }
   }
