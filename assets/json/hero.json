@@ -1,22 +1,22 @@
 [
   {
-    "id": "",
-    "subtitle": "",
-    "offer": "",
-    "type": "",
+    "id": "1",
     "image": "https://res.cloudinary.com/dmqnuzexg/image/upload/v1767209615/Screenshot_20251215_201345_fcb6wi.jpg",
-    "bgColor": "#8bee11",
+    "title": "titz",
+    "offer": "s",
+    "bgColor": "#8bf40b",
     "meta": {
       "createdAt": {
         "_seconds": 1767164776,
         "_nanoseconds": 83000000
       },
       "updatedAt": {
-        "_seconds": 1767281415,
-        "_nanoseconds": 779000000
+        "_seconds": 1767282318,
+        "_nanoseconds": 141000000
       }
     },
-    "title": "titz"
+    "subtitle": "s",
+    "type": "product"
   },
   {
     "id": "1",
