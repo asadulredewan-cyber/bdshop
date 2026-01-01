@@ -1,62 +1,30 @@
 [
   {
+    "meta": {
+      "source": "admin-panel",
+      "createdAt": 1767268475872,
+      "updatedAt": 1767268664735
+    },
+    "title": "",
+    "price": null,
+    "specifications": [],
+    "gallery": [],
     "colorVariants": {
-      "blue": {
+      "red": {
+        "image": "",
         "sizes": {
-          "s": {}
-        },
-        "image": ""
-      },
-      "Red": {
-        "image": "https://res.cloudinary.com/dmqnuzexg/image/upload/v1766851939/n6tmiuxyveeml1d6cbgx.jpg",
-        "sizes": {
-          "l": {
-            "price": 700,
-            "oldPrice": 750
-          },
           "s": {
-            "price": 500
-          },
-          "m": {
-            "oldPrice": 1000
+            "oldPrice": 1
           }
         }
       }
     },
-    "meta": {
-      "updatedAt": 1767199882370,
-      "source": "admin-panel",
-      "createdAt": 1767192858727
-    },
-    "gallery": [
-      "https://res.cloudinary.com/dmqnuzexg/image/upload/v1766851939/n6tmiuxyveeml1d6cbgx.jpg",
-      "https://res.cloudinary.com/dmqnuzexg/image/upload/v1766851941/cjum65gox0rpplalaigd.jpg"
-    ],
-    "id": "4533ea21-43a7-4871-9e4b-5b150559be66",
-    "oldPrice": 700,
-    "discount": "15% OFF",
-    "price": 598,
-    "title": "Stylish Hoodie",
-    "productId": 20,
-    "image": "https://res.cloudinary.com/dmqnuzexg/image/upload/v1766851939/n6tmiuxyveeml1d6cbgx.jpg",
-    "specifications": [],
-    "category": "fashion"
-  },
-  {
-    "id": "7b39a044-f084-4c40-add2-54b949fb902b",
-    "specifications": [],
-    "title": "",
-    "gallery": [],
-    "meta": {
-      "createdAt": 1767192896815,
-      "source": "admin-panel",
-      "updatedAt": 1767192896815
-    },
-    "oldPrice": null,
-    "colorVariants": {},
     "category": "",
+    "id": "9e84b433-1081-4c6d-b174-530e30e8dc96",
     "image": "",
-    "price": null,
-    "productId": 2
+    "details": "<p>zgz</p><p>1</p><p>2</p>",
+    "oldPrice": null,
+    "productId": 5,
+    "discount": null
   }
 ]
