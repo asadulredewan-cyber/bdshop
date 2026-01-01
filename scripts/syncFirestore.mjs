@@ -27,11 +27,21 @@ function writeCache(data) {
   fs.writeFileSync(CACHE_FILE, JSON.stringify(data, null, 2));
 }
 
+function toMillisSafe(v) {
+  if (!v) return 0;
+  if (typeof v === "number") return v;
+  if (typeof v.toMillis === "function") return v.toMillis();
+  return 0;
+}
+
 /* ================= MAIN ================= */
 async function sync() {
   const cache = readCache();
 
-  /* ---------- PRODUCTS ---------- */
+  /* =================================================
+     PRODUCTS — update ONLY if product add/edit/delete
+  ================================================= */
+
   const catalogSnap = await db.doc("meta/catalog").get();
   if (!catalogSnap.exists) {
     console.log("Catalog not found");
@@ -39,36 +49,54 @@ async function sync() {
   }
 
   const catalog = catalogSnap.data();
-  const catalogUpdatedAt =
-    catalog.updatedAt?.toMillis?.() || null;
+  const products = catalog.products || [];
 
-  if (catalogUpdatedAt !== cache.catalogUpdatedAt) {
-    console.log("🔄 Products changed");
+  /* ---- detect real product change ---- */
+  let latestProductUpdate = 0;
+
+  products.forEach(p => {
+    const u = toMillisSafe(p.meta?.updatedAt);
+    if (u > latestProductUpdate) {
+      latestProductUpdate = u;
+    }
+  });
+
+  if (latestProductUpdate && latestProductUpdate !== cache.productsUpdatedAt) {
+    console.log("🔄 Products changed (add/edit/delete)");
+
+    /* sanitize before write */
+    const safeProducts = products.map(p => ({
+      ...p,
+      productId: Number.isFinite(p.productId) ? p.productId : null
+    }));
 
     fs.writeFileSync(
       PRODUCTS_JSON,
-      JSON.stringify(catalog.products || [], null, 2)
+      JSON.stringify(safeProducts, null, 2)
     );
 
-    cache.catalogUpdatedAt = catalogUpdatedAt;
+    cache.productsUpdatedAt = latestProductUpdate;
   } else {
-    console.log("✅ Products unchanged");
+    console.log("✅ Products unchanged (JSON not touched)");
   }
 
-  /* ---------- HERO ---------- */
+  /* =================================================
+     HERO — independent logic (unchanged from before)
+  ================================================= */
+
   const heroSnap = await db.collection("hero").get();
 
-  let latestHeroUpdate = null;
+  let latestHeroUpdate = 0;
   const heroes = heroSnap.docs.map(doc => {
     const data = doc.data();
-    const updated = data.meta?.updatedAt?.toMillis?.() || 0;
-    if (!latestHeroUpdate || updated > latestHeroUpdate) {
-      latestHeroUpdate = updated;
+    const u = toMillisSafe(data.meta?.updatedAt);
+    if (u > latestHeroUpdate) {
+      latestHeroUpdate = u;
     }
     return { id: doc.id, ...data };
   });
 
-  if (latestHeroUpdate !== cache.heroUpdatedAt) {
+  if (latestHeroUpdate && latestHeroUpdate !== cache.heroUpdatedAt) {
     console.log("🔄 Hero changed");
 
     fs.writeFileSync(
