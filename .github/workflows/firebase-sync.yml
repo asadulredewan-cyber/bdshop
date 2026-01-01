@@ -2,8 +2,8 @@ name: Firestore → JSON Sync
 
 on:
   schedule:
-    - cron: "*/30 * * * *"   # every 30 minutes
-  workflow_dispatch:        # manual run option
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
 
 jobs:
   sync:
@@ -20,7 +20,6 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm init -y
           npm install firebase-admin
 
       - name: Run Firestore sync
@@ -36,7 +35,7 @@ jobs:
           if [[ -n "$(git status --porcelain)" ]]; then
             git config user.name "github-actions"
             git config user.email "actions@github.com"
-            git add assets/json/*.json
+            git add assets/json
             git commit -m "chore: sync firestore data"
             git push
           else
