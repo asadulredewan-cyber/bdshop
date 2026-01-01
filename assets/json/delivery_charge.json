@@ -1,0 +1,11 @@
+{
+  "default": {
+    "charge": 120,
+    "label": "Standard Delivery",
+    "eta": "Receive by 3 - 5 days"
+  },
+  "districts": {
+    "Dhaka": 70,
+    "Sylhet": 70
+  }
+}

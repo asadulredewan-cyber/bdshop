@@ -1,0 +1,355 @@
+.cart-page {
+  width: 100%;
+  padding: 20px 0;
+  background: #f0eff0e2;
+
+
+ 
+}
+.cart-item-link {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.cart-layout {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  
+}
+
+/* ================= LEFT ================= */
+.cart-left {
+  flex: 1;
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+/* Header */
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.cart-title {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.cart-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.select-all {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* DELETE SELECTED BUTTON */
+.cart-delete-selected {
+  background: #ff4d4f;
+  color: #fff;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 10px rgba(255, 77, 79, 0.25);
+}
+
+/* Hover effect */
+.cart-delete-selected:hover {
+  background: #e53935;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(255, 77, 79, 0.35);
+}
+
+/* Click effect */
+.cart-delete-selected:active {
+  transform: scale(0.96);
+}
+
+/* Optional: disabled look (future use) */
+.cart-delete-selected:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+
+/* Container Layout */
+.cart-layout {
+  display: flex;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 20px auto;
+  align-items: flex-start;
+}
+
+.cart-left {
+  flex: 2;
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+/* Individual Cart Item */
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.cart-item-main {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cart-item-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.cart-item-img {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 8px;
+  background: #f9f9f9;
+}
+
+.cart-item-info h3 {
+  font-size: 16px;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.cart-item-variant {
+  font-size: 13px;
+  color: #777;
+  margin-bottom: 5px;
+}
+
+.cart-item-price {
+  font-weight: 700;
+  color: #e91e63;
+}
+
+/* Right side: Qty and Total */
+.cart-item-right {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.cart-qty {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.qty-btn {
+  background: #f5f5f5;
+  border: none;
+  padding: 5px 12px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.qty-value {
+  padding: 0 15px;
+  font-weight: bold;
+}
+
+.cart-total {
+  min-width: 80px;
+  font-weight: bold;
+  text-align: right;
+}
+
+.remove-item {
+  color: #ff4d4f;
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-size: 18px;
+}
+
+/* Order Summary (Right Box) */
+.cart-right {
+  flex: 1;
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  position: sticky;
+  top: 20px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.summary-title {
+  font-size: 18px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.total-row {
+  border-top: 1px solid #eee;
+  padding-top: 10px;
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 17px;
+}
+
+.checkout-btn {
+  width: 100%;
+  background: #e91e63;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  margin-top: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+
+.delete-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  backdrop-filter: blur(3px);
+}
+
+.delete-modal {
+  background: #fff;
+  padding: 30px;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 380px;
+  text-align: center;
+  animation: slideIn 0.3s ease;
+}
+
+.modal-icon {
+  font-size: 40px;
+  color: #ff4d4f;
+  margin-bottom: 15px;
+}
+
+.delete-modal h3 { font-size: 20px; margin-bottom: 10px; }
+.delete-modal p { color: #666; margin-bottom: 25px; font-size: 14px; }
+
+.delete-modal-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.btn-cancel, .btn-delete {
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  flex: 1;
+}
+
+.btn-cancel { background: #f0f0f0; color: #333; }
+.btn-delete { background: #ff4d4f; color: #fff; }
+
+@keyframes slideIn {
+  from { transform: translateY(-20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.profile-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.55);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.profile-modal {
+  background: #fff;
+  width: 90%;
+  max-width: 420px;
+  padding: 24px;
+  border-radius: 14px;
+}
+
+.profile-modal.large {
+  max-width: 600px;
+}
+
+.profile-modal label {
+  display: block;
+  margin-top: 12px;
+  font-size: 14px;
+}
+
+.profile-modal input,
+.profile-modal select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 4px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.btn-save {
+  background: #e91e63;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  flex: 1;
+}
+
+.btn-cancel {
+  background: #eee;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  flex: 1;
+}

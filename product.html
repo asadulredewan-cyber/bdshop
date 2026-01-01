@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tong Ghor | Online Shopping</title>
+  <link rel="icon" type="image/x-icon" href="./assets/image/icon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="./assets/css/header.css">
+  <link rel="stylesheet" href="./assets/css/footer.css">
+  <link rel="stylesheet" href="./assets/css/auth-modal.css">
+  <link rel="stylesheet" href="./assets/css/product.css">
+  <link rel="stylesheet" href="./assets/css/home_product.css">
+</head>
+
+<body>
+
+  <header>
+    <div class="container">
+      <div class="left">
+        <button class="hamburger-menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="name">
+          <a href="index.html" class="logo-link">
+            <img src="assets/image/logo.png" alt="Tong Ghor" class="site-logo" loading="eager">
+          </a>
+        </div>
+      </div>
+
+
+      <div class="center">
+
+
+        <div class="search-box">
+          <span class="icon-search"><i class="fa-solid fa-magnifying-glass"></i></span>
+          <input type="text" placeholder="Search essentials, groceries and more..." class="input-field">
+        </div>
+      </div>
+
+      <div class="right">
+        <div class="user-actions">
+          <div class="action-item" id="openLoginBtn" style="cursor: pointer;">
+            <i class="fa-regular fa-user icon-blue"></i>
+            <span>Sign Up/Sign In</span>
+          </div>
+
+
+          <div class="action-item cart-action" id="cartAction">
+            <span class="cart-badge" id="cartQtyBadge"></span>
+            <i class="fa-solid fa-cart-shopping icon-blue"></i>
+
+            <span>Cart</span>
+          </div>
+
+          <button class="mobile-search-btn" id="mobileSearchBtn">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+  </header>
+  <nav class="category-nav">
+    <div class="category-container" id="main-nav-cats">
+      <div class="category-item active" data-cat="all">All Categories</div>
+      <div class="category-item" data-cat="premium-fruits">Premium Fruits</div>
+      <div class="category-item" data-cat="home-kitchen">Home & Kitchen</div>
+      <div class="category-item" data-cat="fashion">Fashion</div>
+      <div class="category-item" data-cat="electronics">Electronics</div>
+      <div class="category-item" data-cat="beauty">Beauty</div>
+      <div class="category-item" data-cat="home-improvement">Home Improvement</div>
+      <div class="category-item" data-cat="sports">Sports, Toys & Luggage</div>
+    </div>
+
+  </nav>
+
+
+
+
+
+
+
+
+
+
+
+
+  <main class="p-detail-wrapper" id="product-content">
+    <p style="text-align: center; padding: 50px;">Loading Product Details...</p>
+
+  </main>
+
+  <!-- DETAILS + SPECS WRAPPER -->
+  <div id="pd-specs-section" class="specs-wrapper" style="display:none">
+
+    <!-- Tabs (শুধু তখনই দেখাবে যখন ২টা থাকবে) -->
+    <div id="pd-tabs" class="pd-tabs" style="display:none">
+      <button id="tab-details" class="pd-tab active">Product Details</button>
+      <button id="tab-specs" class="pd-tab">Specifications</button>
+    </div>
+
+    <!-- Content -->
+    <div class="specs-card">
+
+      <!-- Dynamic Title -->
+      <h3 id="pd-title" class="specs-title"></h3>
+
+      <!-- Product Details -->
+      <div id="pd-details" class="specs-body"></div>
+
+      <!-- Specifications -->
+      <div id="pd-specs" class="specs-body" style="display:none">
+        <div id="specs-list"></div>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="product-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Recommended <span>For You</span></h2>
+        <a href="index.html?category=All%20Categories" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+      </div>
+
+    </div>
+    <div id="random-products-grid" class="product-grid">
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="auth-overlay">
+    <div class="auth-modal">
+      <div class="auth-close">×</div>
+
+      <div id="auth-status" class="status-container" style="display: none;">
+        <span class="status-icon">⚠</span>
+        <span id="status-message"></span>
+      </div>
+
+      <div class="auth-header">
+        <h2 id="login-title" class="title-login active">Sign In</h2>
+        <h2 id="signup-title" class="title-signup">Sign Up</h2>
+      </div>
+
+      <div class="auth-illustration"></div>
+
+      <div id="login-body" class="auth-body login-body active">
+        <div id="forgot-password-box" style="display: none;">
+          <label>Enter your email to reset password<span>*</span></label>
+          <div class="input-box">
+            <i class="fa-solid fa-envelope icon"></i>
+            <input type="email" id="reset-email" placeholder="example@mail.com">
+          </div>
+          <button class="btn" onclick="handlePasswordReset()">Send Reset Link</button>
+          <p style="text-align: center; margin-top: 15px; font-size: 13px;">
+            Back to <span class="forgot" onclick="hideForgotBox()">Sign In</span>
+          </p>
+        </div>
+        <label>Email / Phone Number<span> <span>*</span></span></label>
+        <div class="input-box">
+          <span class="icon">👤</span>
+          <input type="text" id="login-email" placeholder="Email / Phone Number">
+        </div>
+
+        <label>Password<span><span>*</span></span></label>
+        <div class="input-box">
+          <i class="fas fa-lock icon"></i>
+          <input type="password" id="login-pass" placeholder="Password">
+          <span class="forgot" onclick="handleForgotPassword()" style="cursor: pointer; color: #e91e63;">Forgot?</span>
+        </div>
+
+        <button id="main-login-btn" class="btn" onclick="handleSignIn()">Sign In</button>
+
+        <div class="google-btn" id="google-login" onclick="handleGoogleLogin()">
+          <img src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png" alt="google logo">
+          <span>Sign in with Google</span>
+        </div>
+
+        <p class="switch-text">
+          New to bdshops? <span id="to-signup" class="switch-to-signup"
+            style="color: #e91e63; cursor: pointer; font-weight: bold;">Register</span>
+        </p>
+      </div>
+
+      <div id="signup-body" class="auth-body signup-body">
+        <div class="row">
+          <div class="input-box">
+            <input type="text" id="reg-fname" placeholder="First Name">
+          </div>
+          <div class="input-box">
+            <input type="text" id="reg-lname" placeholder="Last Name">
+          </div>
+        </div>
+        <div class="input-box">
+          <input type="text" id="reg-mobile" placeholder="Mobile Number">
+        </div>
+        <div class="input-box">
+          <input type="email" id="reg-email" placeholder="Email">
+        </div>
+        <div class="input-box">
+          <input type="password" id="reg-pass" placeholder="Password">
+        </div>
+
+        <button class="btn" onclick="handleSignup()">Create Account</button>
+
+        <p class="switch-text">
+          Already have an account?
+          <span id="to-login" class="switch-to-login" style="color: #e91e63; cursor: pointer; font-weight: bold;">Sign
+            In</span>
+        </p>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <footer>
+    <div class="footer-container">
+
+
+      <!-- Brand & Contact -->
+      <div class="footer-col">
+        <h2 class="footer-logo">Tong Ghor</h2>
+
+        <div class="footer-contact"></div>
+        <p>Contact Us</p>
+        <div class="contact-whastapp">
+          <p>
+            <a href="https://wa.me/8801785-051459" target="_blank">
+
+              WhatsApp Admin 1
+            </a>
+          </p>
+
+          <p><a href="https://wa.me/8801945321850" target="_blank">
+
+              WhatsApp admin 2
+            </a>
+          </p>
+        </div>
+        <div class="contact-Telephone">
+
+          </p>
+
+          <p><a href="tel:+8801785051459">
+              Call: 01785-051459
+            </a>
+          </p>
+
+          <p><a href="tel:+8801945321850">
+              Call: 01945-321850
+            </a>
+          </p>
+        </div>
+
+
+      </div>
+
+      <!-- Categories -->
+      <div class="footer-col">
+        <h4>Most Popular Categories</h4>
+        <ul>
+          <li>
+            <div class="category-item-fotter" data-cat="premium-fruits">Premium Fruits</div>
+          </li>
+          <li>
+            <div class="category-item-fotter" data-cat="home-kitchen">Home & Kitchen</div>
+          </li>
+          <li>
+            <div class="category-item-fotter" data-cat="fashion">Fashion</div>
+          </li>
+          <li>
+            <div class="category-item-fotter" data-cat="electronics">Electronics</div>
+          </li>
+          <li>
+            <div class="category-item-fotter" data-cat="beauty">Beauty</div>
+          </li>
+          <li>
+            <div class="category-item-fotter" data-cat="home-improvement">Home Improvement</div>
+          </li>
+          <li>
+            <div class="category-item-fotter" data-cat="sports">Sports, Toys & Luggage</div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Customer Services -->
+      <div class="footer-col">
+        <h4>Customer Services</h4>
+        <ul>
+          <li>Update very soon</li>
+          <li>please contact on</li>
+          <div class="contact-whastapp">
+            <p><a href="https://wa.me/8801945321850" target="_blank">
+
+                WhatsApp Admin 2
+              </a>
+            </p>
+            <p> <a href="https://wa.me/8801785-051459" target="_blank">
+
+                WhatsApp Admin 1
+              </a></p>
+          </div>
+        </ul>
+      </div>
+
+
+
+      <div class="footer-bottom">
+        © 2022 All rights reserved. Reliance Retail Ltd.
+      </div>
+    </div>
+  </footer>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script type="module" src="./assets/js/core/login.js"></script>
+  <script type="module" src="./assets/js/header/header-nav.js"></script>
+  <script type="module" src="./assets/js/header/header-cart.js"></script>
+  <script type="module" src="./assets/js/product/details.js"></script>
+  <script type="module" src="./assets/js/product/cart.js"></script>
+  <script type="module" src="./assets/js/product/buy.js"></script>
+</body>
+
+</html>
