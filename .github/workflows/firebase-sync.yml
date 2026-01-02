@@ -2,7 +2,7 @@ name: Firestore → JSON Sync
 
 on:
   schedule:
-    - cron: "*/30 * * * *"
+    - cron: "*/30 * * * *"   # every 30 minutes
   workflow_dispatch:
 
 jobs:
@@ -10,34 +10,44 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
+      # 1) Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v4
 
+      # 2) Setup Node
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
 
+      # 3) Install only required dependency
       - name: Install dependencies
-        run: |
-          npm install firebase-admin
+        run: npm install firebase-admin
 
+      # 4) Run Firestore → JSON sync
       - name: Run Firestore sync
         env:
           FIREBASE_PROJECT_ID: ${{ secrets.FIREBASE_PROJECT_ID }}
           FIREBASE_CLIENT_EMAIL: ${{ secrets.FIREBASE_CLIENT_EMAIL }}
           FIREBASE_PRIVATE_KEY: ${{ secrets.FIREBASE_PRIVATE_KEY }}
-        run: |
-          node scripts/syncFirestore.mjs
+        run: node scripts/syncFirestore.mjs
 
-      - name: Commit & Push if changed
+      # 5) Commit & push ONLY if real data changed
+      - name: Commit & Push if data changed
         run: |
-          if [[ -n "$(git status --porcelain)" ]]; then
-            git config user.name "github-actions"
-            git config user.email "actions@github.com"
-            git add assets/json
-            git commit -m "chore: sync firestore data"
-            git push
-          else
-            echo "No changes detected"
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+
+          # Only authoritative output files
+          git add assets/json/products.json \
+                  assets/json/hero.json \
+                  scripts/.lastSync.json || true
+
+          # If nothing staged → success (NO ERROR)
+          if git diff --cached --quiet; then
+            echo "No data change → workflow success"
+            exit 0
           fi
+
+          git commit -m "chore: sync firestore data"
+          git push
