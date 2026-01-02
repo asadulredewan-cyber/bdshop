@@ -1,3 +1,4 @@
+
 import { auth, db } from "../core/firebase.js";
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import {
@@ -130,20 +131,8 @@ function renderCartItems() {
             <a href="./product.html?pid=${item.productId}" class="cart-item-link">
   <h3 class="cart-item-name">${item.title}</h3>
 </a>
-          
-            ${
-  item.color || item.size
-    ? `<p class="cart-item-variant">
-        ${item.color ? `Color: ${item.color}` : ""}
-        ${item.color && item.size ? " | " : ""}
-        ${item.size ? `Size: ${item.size}` : ""}
-      </p>`
-    : ""
-}
-
-<p class="cart-item-price">৳ ${item.price}</p>
-
-
+            <p class="cart-item-variant">Color: ${item.color} | Size: ${item.size}</p>
+            <p class="cart-item-price">৳ ${item.price}</p>
           </div>
         </div>
         <div class="cart-item-right">
@@ -389,5 +378,3 @@ if (checkoutBtn) {
     window.location.href = `./checkout.html?sid=${ref.id}`;
   };
 }
-
-
