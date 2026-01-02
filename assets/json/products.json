@@ -1,80 +1,68 @@
 [
   {
-    "colorVariants": {
-      "Black": {
-        "image": "",
-        "sizes": {}
-      },
-      "Silver": {
-        "sizes": {},
-        "image": ""
-      }
-    },
     "oldPrice": 1050,
-    "meta": {
-      "createdAt": 1767292729091,
-      "updatedAt": 1767293147017,
-      "source": "admin-panel"
-    },
-    "id": "a3ae598c-f1d2-467f-8ffe-dbba90dc9c80",
-    "discount": "43% OFF",
+    "details": "<p>🚴‍♂️ Newfangled Smart Mobile Phone Holder – Waterproof & Secure Ride Companion! 📱</p><p>সাইকেল, বাইক বা মোটরসাইকেল চালানোর সময় মোবাইল সুরক্ষিত রাখুন স্টাইল ও স্মার্টনেসের সাথে!</p><p>Newfangled Universal Waterproof Bicycle Phone Holder আপনার আউটডোর রাইডকে করবে আরও নিরাপদ ও আরামদায়ক।</p><p>🔹 Product Details:</p><p>✔️ Type: Motorcycle / Bicycle Phone Holder</p><p>✔️ Model: Adjustable Waterproof Bicycle Phone Holder</p><p>✔️ Material: Durable ABS (Lightweight & Strong)</p><p>✔️ Features: Waterproof, Magnetic, Adjustable</p><p>✔️ Compatible: Universal – প্রায় সব স্মার্টফোনে ফিট করে</p><p>✔️ Gross Weight: 350g</p><p>✔️ Size (Outer): 193 × 99 × 25mm</p><p>✔️ Size (Inner): 173 × 82 × 8mm</p><p>✔️ Origin: China</p><p>✨ Key Benefits:</p><p>✅ Waterproof Design – পানি, ধুলো ও স্প্ল্যাশ থেকে ফোন সুরক্ষা</p><p>✅ Magnetic Secure Grip – ঝাঁকুনিতেও ফোন থাকবে শক্তভাবে আটকানো</p><p>✅ Adjustable Mount – হ্যান্ডেলে সহজে সেট করা যায়</p><p>✅ Smooth Touch Screen Access – রাইডের সময়ও স্ক্রিন ব্যবহার করা যায়</p><p>✅ Modern & Trendy Look – Sports & Outdoors-এর জন্য পারফেক্ট</p><p>🏍️ Navigation, Calls ও Music উপভোগ করুন হ্যান্ডস-ফ্রি ও সেফভাবে!</p>",
     "title": "Newfangled Smart Mobile Phone Holder – Waterproof & Secure Ride Companion! 📱",
+    "productId": 1,
+    "discount": "43% OFF",
+    "image": "",
     "category": "Home Improvement",
-    "specifications": [],
     "gallery": [
       "https://res.cloudinary.com/dmqnuzexg/image/upload/v1767291306/606838418_122109959517144882_5485045152786991125_n_pwavgs.jpg",
       "https://res.cloudinary.com/dmqnuzexg/image/upload/v1767291306/605717566_122109959883144882_943716105288318726_n_eyssw2.jpg",
       "https://res.cloudinary.com/dmqnuzexg/image/upload/v1767291305/606604167_122109959601144882_2186911825333141237_n_pnqqy9.jpg",
       "https://res.cloudinary.com/dmqnuzexg/image/upload/v1767291304/605713100_122109959679144882_1965626899589748193_n_qlkc3e.jpg"
     ],
-    "price": 599,
-    "productId": 1,
-    "details": "<p>🚴‍♂️ Newfangled Smart Mobile Phone Holder – Waterproof & Secure Ride Companion! 📱</p><p>সাইকেল, বাইক বা মোটরসাইকেল চালানোর সময় মোবাইল সুরক্ষিত রাখুন স্টাইল ও স্মার্টনেসের সাথে!</p><p>Newfangled Universal Waterproof Bicycle Phone Holder আপনার আউটডোর রাইডকে করবে আরও নিরাপদ ও আরামদায়ক।</p><p>🔹 Product Details:</p><p>✔️ Type: Motorcycle / Bicycle Phone Holder</p><p>✔️ Model: Adjustable Waterproof Bicycle Phone Holder</p><p>✔️ Material: Durable ABS (Lightweight & Strong)</p><p>✔️ Features: Waterproof, Magnetic, Adjustable</p><p>✔️ Compatible: Universal – প্রায় সব স্মার্টফোনে ফিট করে</p><p>✔️ Gross Weight: 350g</p><p>✔️ Size (Outer): 193 × 99 × 25mm</p><p>✔️ Size (Inner): 173 × 82 × 8mm</p><p>✔️ Origin: China</p><p>✨ Key Benefits:</p><p>✅ Waterproof Design – পানি, ধুলো ও স্প্ল্যাশ থেকে ফোন সুরক্ষা</p><p>✅ Magnetic Secure Grip – ঝাঁকুনিতেও ফোন থাকবে শক্তভাবে আটকানো</p><p>✅ Adjustable Mount – হ্যান্ডেলে সহজে সেট করা যায়</p><p>✅ Smooth Touch Screen Access – রাইডের সময়ও স্ক্রিন ব্যবহার করা যায়</p><p>✅ Modern & Trendy Look – Sports & Outdoors-এর জন্য পারফেক্ট</p><p>🏍️ Navigation, Calls ও Music উপভোগ করুন হ্যান্ডস-ফ্রি ও সেফভাবে!</p>",
-    "image": ""
-  },
-  {
-    "productId": 2,
-    "category": "Home Improvement",
-    "price": 599,
-    "discount": "40% OFF",
-    "oldPrice": 1002,
-    "image": "",
-    "title": "🐼 Cute Cartoon Panda Nano Mist Spray",
-    "gallery": [
-      "https://res.cloudinary.com/dmqnuzexg/image/upload/v1767291306/607117068_122109340281144882_8462313611775641394_n_jbubmu.jpg",
-      "https://res.cloudinary.com/dmqnuzexg/image/upload/v1767291306/606897945_122109340323144882_1324397741349800483_n_a1yfte.jpg"
-    ],
     "specifications": [],
     "colorVariants": {
+      "Black": {
+        "sizes": {},
+        "image": "ass.jsp"
+      },
+      "Silver": {
+        "sizes": {},
+        "image": ""
+      }
+    },
+    "price": 599,
+    "id": "a3ae598c-f1d2-467f-8ffe-dbba90dc9c80",
+    "meta": {
+      "updatedAt": 1767293147017,
+      "source": "admin-panel",
+      "createdAt": 1767292729091
+    }
+  },
+  {
+    "colorVariants": {
+      "pink": {
+        "image": "",
+        "label": "pink",
+        "sizes": {
+          "Regular": {
+            "price": 701
+          },
+          "Extra": {
+            "oldPrice": 1401
+          },
+          "Medium": {
+            "oldPrice": 1400,
+            "price": 702
+          }
+        }
+      },
       "white": {
+        "image": "",
+        "label": "White",
         "sizes": {
           "Medium": {
             "oldPrice": 1000,
             "price": 720
           }
-        },
-        "label": "White",
-        "image": ""
-      },
-      "pink": {
-        "sizes": {
-          "Extra": {
-            "oldPrice": 1401
-          },
-          "Medium": {
-            "price": 702,
-            "oldPrice": 1400
-          },
-          "Regular": {
-            "price": 701
-          }
-        },
-        "label": "pink",
-        "image": ""
+        }
       },
       "black": {
-        "image": "",
         "label": "Black",
+        "image": "",
         "sizes": {
           "Regular": {
             "price": 600
@@ -82,12 +70,24 @@
         }
       }
     },
+    "specifications": [],
+    "image": "",
+    "price": 599,
+    "discount": "40% OFF",
+    "productId": 2,
+    "gallery": [
+      "https://res.cloudinary.com/dmqnuzexg/image/upload/v1767291306/607117068_122109340281144882_8462313611775641394_n_jbubmu.jpg",
+      "https://res.cloudinary.com/dmqnuzexg/image/upload/v1767291306/606897945_122109340323144882_1324397741349800483_n_a1yfte.jpg"
+    ],
     "details": "<p>🐼 Cute Cartoon Panda Nano Mist Spray</p><p>💧 Personal Portable Mini Air Humidifier for Bedroom</p><p>আপনার ঘর বা কাজের জায়গায় আনুন আরাম ও সতেজতার ছোঁয়া ✨</p><p>পান্ডা কার্টুন ডিজাইনের এই কিউট ন্যানো মিস্ট স্প্রে হিউমিডিফায়ার বাতাসকে রাখবে আর্দ্র ও ফ্রেশ 🌿</p><p>✨ Key Features:</p><p>✔️ Nano Mist Spray – সূক্ষ্ম মিস্টে ত্বক ও বাতাস হাইড্রেট রাখে</p><p>✔️ Cute Panda Cartoon Design – দেখতেই মন ভরে যাবে 🐼</p><p>✔️ Personal & Portable – ছোট সাইজ, সহজে বহনযোগ্য</p><p>✔️ Bedroom / Office / Study Room এর জন্য পারফেক্ট</p><p>✔️ Dry Air কমাতে সাহায্য করে</p><p>✔️ Quiet Operation – নীরবে কাজ করে, ঘুমের কোনো সমস্যা নেই 😴</p><p>✔️ USB Powered – সহজ চার্জিং সুবিধা</p><p>ব্যবহার উপযোগী:</p><p>🏠 Bedroom</p><p>💼 Office Desk</p><p>📚 Study Room</p><p>🚗 Travel এর সময়</p><p>👉 নিজের জন্য বা গিফট হিসেবে দারুণ চয়েস!</p><p>স্টক সীমিত ⏳ আগে অর্ডার করুন!</p>",
-    "id": "01db906b-7744-4ef8-b0be-f0ff48a960ee",
+    "oldPrice": 1002,
+    "category": "Home Improvement",
+    "title": "🐼 Cute Cartoon Panda Nano Mist Spray",
     "meta": {
-      "createdAt": 1767294742242,
+      "updatedAt": 1767294742242,
       "source": "admin-panel",
-      "updatedAt": 1767294742242
-    }
+      "createdAt": 1767294742242
+    },
+    "id": "01db906b-7744-4ef8-b0be-f0ff48a960ee"
   }
 ]
