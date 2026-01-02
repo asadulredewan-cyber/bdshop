@@ -389,9 +389,38 @@ window.changeMainImage = function (img) {
   document.querySelectorAll(".thumb-img").forEach(t =>
     t.classList.toggle("active", t.src === img)
   );
+  syncThumbWindow();
 };
 
 
+function getVisibleThumbCount() {
+  return window.innerWidth <= 768 ? 3 : 4;
+}
+
+function syncThumbWindow() {
+  const slider = document.getElementById("thumbSlider");
+  const thumbs = slider?.querySelectorAll(".thumb-img");
+  if (!slider || !thumbs.length) return;
+
+  const activeIndex = GALLERY_IMAGES.indexOf(CURRENT_IMAGE);
+  if (activeIndex === -1) return;
+
+  const visibleCount = getVisibleThumbCount();
+  const thumbWidth = thumbs[0].offsetWidth + 10; // width + gap
+
+  // window start index (sliding window)
+  let startIndex = activeIndex - Math.floor(visibleCount / 2);
+
+  if (startIndex < 0) startIndex = 0;
+  if (startIndex > thumbs.length - visibleCount) {
+    startIndex = thumbs.length - visibleCount;
+  }
+
+  slider.scrollTo({
+    left: startIndex * thumbWidth,
+    behavior: "smooth"
+  });
+}
 
 
 
