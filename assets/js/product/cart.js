@@ -6,6 +6,21 @@ import {
   serverTimestamp
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
+
+function hasColors(product) {
+  return product.colorVariants && Object.keys(product.colorVariants).length > 0;
+}
+
+function hasSizes(product, color) {
+  return (
+    hasColors(product) &&
+    product.colorVariants[color] &&
+    product.colorVariants[color].sizes &&
+    Object.keys(product.colorVariants[color].sizes).length > 0
+  );
+}
+
+
 window.handleAddToCart = async function () {
   const btn = document.getElementById("addToCartBtn");
   if (!btn || btn.disabled) return;
@@ -16,10 +31,17 @@ window.handleAddToCart = async function () {
     return;
   }
 
-  if (!PRODUCT || !SELECTED.color || !SELECTED.size) {
-    alert("Please select color and size");
-    return;
-  }
+  if (!PRODUCT) return;
+
+if (hasColors(PRODUCT) && !SELECTED.color) {
+  alert("Please select a color");
+  return;
+}
+
+if (hasSizes(PRODUCT, SELECTED.color) && !SELECTED.size) {
+  alert("Please select a size");
+  return;
+}
 
   btn.disabled = true;
   const oldText = btn.innerText;
@@ -29,7 +51,10 @@ window.handleAddToCart = async function () {
     const uid = user.uid;
 
     // 🔑 productId-based cart key
-    const docId = `${PRODUCT.productId}_${SELECTED.color}_${SELECTED.size}`;
+    const colorKey = SELECTED.color || "default";
+const sizeKey = SELECTED.size || "default";
+
+const docId = `${PRODUCT.productId}_${colorKey}_${sizeKey}`;
 
     const cartRef = doc(db, "users", uid, "cart", docId);
     const snap = await getDoc(cartRef);
@@ -40,14 +65,14 @@ window.handleAddToCart = async function () {
     }
 
     await setDoc(cartRef, {
-      productId: PRODUCT.productId,   // ✅ FIXED
-      title: PRODUCT.title,
-      color: SELECTED.color,
-      size: SELECTED.size,
-      qty: finalQty,
-      image: PRODUCT.image,
-      addedAt: serverTimestamp()
-    });
+  productId: PRODUCT.productId,
+  title: PRODUCT.title,
+  color: hasColors(PRODUCT) ? SELECTED.color : null,
+  size: hasSizes(PRODUCT, SELECTED.color) ? SELECTED.size : null,
+  qty: finalQty,
+  image: CURRENT_IMAGE || PRODUCT.image,
+  addedAt: serverTimestamp()
+});
 
     btn.innerText = "Added ✓";
     setTimeout(() => {
@@ -62,3 +87,4 @@ window.handleAddToCart = async function () {
     alert("Failed to add to cart");
   }
 };
+
