@@ -1,6 +1,25 @@
 [
   {
     "id": "1",
+    "title": "SUPER SELL",
+    "subtitle": "COME FAST GET FAST",
+    "offer": "20% DISCOUNT",
+    "image": "https://res.cloudinary.com/dmqnuzexg/image/upload/v1767381228/1000024406-removebg-preview_lcwkev.png",
+    "bgColor": "#ba80bd",
+    "type": "Product",
+    "meta": {
+      "createdAt": {
+        "_seconds": 1767381434,
+        "_nanoseconds": 933000000
+      },
+      "updatedAt": {
+        "_seconds": 1767381434,
+        "_nanoseconds": 933000000
+      }
+    }
+  },
+  {
+    "id": "1",
     "title": "BIG OFFER",
     "subtitle": "COME FAST BUY FAST",
     "offer": "60% discount",
