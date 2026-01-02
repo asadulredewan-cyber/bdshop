@@ -12,10 +12,9 @@ function hasColors(product) {
 }
 
 function hasSizes(product, color) {
+  if (!color) return false;
   return (
-    hasColors(product) &&
-    product.colorVariants[color] &&
-    product.colorVariants[color].sizes &&
+    product.colorVariants?.[color]?.sizes &&
     Object.keys(product.colorVariants[color].sizes).length > 0
   );
 }
@@ -87,4 +86,5 @@ const docId = `${PRODUCT.productId}_${colorKey}_${sizeKey}`;
     alert("Failed to add to cart");
   }
 };
+
 
