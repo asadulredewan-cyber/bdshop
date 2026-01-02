@@ -1,1 +1,21 @@
-[]
+[
+  {
+    "id": "5104acae-5b48-4df4-8cb2-4c1449b68bff",
+    "productId": 1,
+    "title": "",
+    "category": "",
+    "price": null,
+    "oldPrice": null,
+    "image": "",
+    "gallery": [],
+    "colorVariants": {},
+    "details": "",
+    "specifications": [],
+    "discount": null,
+    "meta": {
+      "createdAt": 1767349417254,
+      "updatedAt": 1767349417254,
+      "source": "admin-panel"
+    }
+  }
+]
