@@ -1,20 +1,261 @@
 [
   {
+    "image": "",
+    "oldPrice": null,
+    "gallery": [],
+    "category": "",
+    "colorVariants": {},
     "id": "5104acae-5b48-4df4-8cb2-4c1449b68bff",
+    "title": "",
+    "discount": null,
+    "details": "",
     "productId": 1,
+    "meta": {
+      "updatedAt": 1767349417254,
+      "source": "admin-panel",
+      "createdAt": 1767349417254
+    },
+    "specifications": [],
+    "price": null
+  },
+  {
+    "discount": null,
+    "title": "",
+    "productId": 2,
+    "gallery": [],
+    "specifications": [],
+    "oldPrice": null,
+    "price": null,
+    "category": "Home & Kitchen",
+    "colorVariants": {},
+    "id": "f420b799-9def-4573-b6d5-1ca2924da182",
+    "image": "",
+    "meta": {
+      "updatedAt": 1767352442291,
+      "createdAt": 1767352442290,
+      "source": "admin-panel"
+    },
+    "details": ""
+  },
+  {
+    "details": "<p>1</p>",
+    "id": "fdaa90f1-edf9-40bb-a800-e68f776cbc7f",
+    "title": "",
+    "specifications": [],
+    "image": "",
+    "oldPrice": null,
+    "category": "",
+    "meta": {
+      "createdAt": 1767352693429,
+      "source": "admin-panel",
+      "updatedAt": 1767352693429
+    },
+    "gallery": [],
+    "colorVariants": {},
+    "productId": 3,
+    "discount": null,
+    "price": null
+  },
+  {
+    "price": 1,
+    "specifications": [
+      {
+        "value": "a",
+        "label": "a"
+      }
+    ],
+    "oldPrice": 2,
+    "discount": "50% OFF",
+    "productId": 4,
+    "gallery": [
+      "https://res.cloudinary.com/dmqnuzexg/image/upload/v1767346061/608534156_122109954783144882_8678058633658823389_n_vrncoz.jpg"
+    ],
+    "meta": {
+      "source": "admin-panel",
+      "updatedAt": 1767352766562,
+      "createdAt": 1767352766562
+    },
+    "image": "",
+    "id": "77b38c0f-47dd-48d7-80a1-0bc69307e407",
+    "title": "1",
+    "details": "<p>s</p>",
+    "category": "Home & Kitchen",
+    "colorVariants": {
+      "red": {
+        "sizes": {
+          "s": {
+            "oldPrice": 1,
+            "price": 1
+          }
+        },
+        "label": "red",
+        "image": ""
+      }
+    }
+  },
+  {
+    "title": "",
+    "discount": null,
+    "gallery": [],
+    "oldPrice": null,
+    "meta": {
+      "updatedAt": 1767352824926,
+      "source": "admin-panel",
+      "createdAt": 1767352824926
+    },
+    "colorVariants": {},
+    "id": "56e8a3b7-c943-4454-a1df-79f2810e1e35",
+    "price": null,
+    "category": "",
+    "productId": 5,
+    "specifications": [],
+    "image": "",
+    "details": ""
+  },
+  {
+    "image": "",
+    "meta": {
+      "createdAt": 1767352870299,
+      "updatedAt": 1767352870299,
+      "source": "admin-panel"
+    },
+    "oldPrice": null,
+    "id": "38a01210-eb9f-4fc1-8d58-e449859ce2f8",
+    "gallery": [],
+    "productId": 6,
+    "specifications": [],
+    "title": "",
+    "colorVariants": {
+      "s": {
+        "label": "s",
+        "image": "sss"
+      }
+    },
+    "price": null,
+    "details": "",
+    "category": "",
+    "discount": null
+  },
+  {
+    "category": "",
+    "title": "",
+    "discount": null,
+    "id": "496196ab-bceb-47e7-a646-33a7d8c873d4",
+    "price": null,
+    "specifications": [],
+    "colorVariants": {},
+    "productId": 7,
+    "image": "aaaaa",
+    "meta": {
+      "updatedAt": 1767352887780,
+      "createdAt": 1767352887780,
+      "source": "admin-panel"
+    },
+    "details": "",
+    "gallery": [],
+    "oldPrice": null
+  },
+  {
+    "productId": 8,
+    "specifications": [],
+    "oldPrice": null,
+    "details": "",
+    "image": "aaaaaaaaaaa",
+    "title": "",
+    "discount": null,
+    "id": "28573498-c967-4604-8510-7fb702ed93ed",
+    "meta": {
+      "updatedAt": 1767352914565,
+      "createdAt": 1767352914565,
+      "source": "admin-panel"
+    },
+    "colorVariants": {},
+    "gallery": [],
+    "price": null,
+    "category": ""
+  },
+  {
+    "category": "",
+    "price": null,
+    "oldPrice": null,
+    "colorVariants": {},
+    "meta": {
+      "source": "admin-panel",
+      "updatedAt": 1767352928008,
+      "createdAt": 1767352928008
+    },
+    "id": "56021fba-06bb-457a-95b9-0ee6d4ab424e",
+    "productId": 9,
+    "gallery": [],
+    "title": "",
+    "specifications": [],
+    "image": "",
+    "discount": null,
+    "details": ""
+  },
+  {
+    "image": "",
+    "category": "",
+    "discount": null,
+    "oldPrice": null,
+    "id": "61a95e75-77ef-4f74-b23a-e2bf2b3aa45e",
+    "meta": {
+      "createdAt": 1767352963525,
+      "source": "admin-panel",
+      "updatedAt": 1767352963525
+    },
+    "specifications": [],
+    "productId": 10,
+    "price": null,
+    "details": "",
+    "title": "",
+    "colorVariants": {},
+    "gallery": [
+      "https://res.cloudinary.com/dmqnuzexg/image/upload/v1767346061/608534156_122109954783144882_8678058633658823389_n_vrncoz.jpg"
+    ]
+  },
+  {
+    "id": "3a035e36-e7f1-4d34-acf7-1b93356bd612",
+    "discount": null,
+    "meta": {
+      "updatedAt": 1767353059740,
+      "source": "admin-panel",
+      "createdAt": 1767353059740
+    },
+    "gallery": [],
+    "specifications": [],
+    "title": "",
+    "details": "",
+    "oldPrice": null,
+    "price": null,
+    "category": "",
+    "productId": 11,
+    "colorVariants": {},
+    "image": "https://res.cloudinary.com/dmqnuzexg/image/upload/v1767346061/608534156_122109954783144882_8678058633658823389_n_vrncoz.jpg"
+  },
+  {
+    "id": "a7062600-3a93-4bb4-895f-1b33a7f2aebc",
+    "productId": 12,
     "title": "",
     "category": "",
     "price": null,
     "oldPrice": null,
-    "image": "",
-    "gallery": [],
-    "colorVariants": {},
+    "image": "https://res.cloudinary.com/dmqnuzexg/image/upload/v1767346061/608534156_122109954783144882_8678058633658823389_n_vrncoz.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dmqnuzexg/image/upload/v1767346058/608547890_122109650931144882_5321978762468331647_n_tthego.jpg"
+    ],
+    "colorVariants": {
+      "w": {
+        "label": "w",
+        "image": "https://res.cloudinary.com/dmqnuzexg/image/upload/v1767346061/608534156_122109954783144882_8678058633658823389_n_vrncoz.jpg"
+      }
+    },
     "details": "",
     "specifications": [],
     "discount": null,
     "meta": {
-      "createdAt": 1767349417254,
-      "updatedAt": 1767349417254,
+      "createdAt": 1767353260784,
+      "updatedAt": 1767353260784,
       "source": "admin-panel"
     }
   }
