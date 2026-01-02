@@ -130,7 +130,7 @@ function renderCartItems() {
             <a href="./product.html?pid=${item.productId}" class="cart-item-link">
   <h3 class="cart-item-name">${item.title}</h3>
 </a>
-            <p class="cart-item-variant">Color: ${item.color} | Size: ${item.size}</p>
+          
             ${
   item.color || item.size
     ? `<p class="cart-item-variant">
@@ -140,6 +140,10 @@ function renderCartItems() {
       </p>`
     : ""
 }
+
+<p class="cart-item-price">৳ ${item.price}</p>
+
+
           </div>
         </div>
         <div class="cart-item-right">
@@ -385,4 +389,5 @@ if (checkoutBtn) {
     window.location.href = `./checkout.html?sid=${ref.id}`;
   };
 }
+
 
