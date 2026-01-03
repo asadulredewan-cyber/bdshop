@@ -189,14 +189,40 @@ function renderOrderItems() {
 
   CHECKOUT_ITEMS.forEach(item => {
     totalQty += item.qty;
-    orderItemsBox.innerHTML += `
-      <div class="checkout-item">
-        <img src="${item.image}">
-        <div>${item.title}<br>${item.color} | ${item.size}</div>
-        <div>${item.qty}</div>
-        <div>৳ ${item.price * item.qty}</div>
+ orderItemsBox.innerHTML += `
+  <div class="checkout-item">
+    <img src="${item.image}">
+
+    <div class="ci-info">
+      <div class="ci-title">${item.title}</div>
+      ${
+        item.color || item.size
+          ? `<div class="ci-variant">
+               ${item.color ?? ""}${item.color && item.size ? " | " : ""}${item.size ?? ""}
+             </div>`
+          : ""
+      }
+    </div>
+
+    <div class="ci-meta">
+      <div class="ci-price">
+        <span>price</span>
+        <strong>৳ ${item.price}</strong>
       </div>
-    `;
+
+      <div class="ci-qty">
+        <span>qty</span>
+        <strong>${item.qty}</strong>
+      </div>
+    </div>
+
+    <div class="ci-total">
+      <span>Total price</span>
+      <strong>৳ ${item.price * item.qty}</strong>
+    </div>
+  </div>
+`;
+
   });
 
   itemCountEl.innerText = totalQty;
