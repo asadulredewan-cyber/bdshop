@@ -12,6 +12,21 @@ import {
   onSnapshot
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
+
+
+
+
+startPageLoad(); // 🔥 loader starts
+
+onAuthStateChanged(auth, async (user) => {
+  try {
+    if (user) {
+      await loadUserName(user.uid);
+    }
+  } finally {
+    endPageLoad(); // 🔥 loader ends
+  }
+});
 /* ================= ELEMENTS ================= */
 const loginBtn = document.getElementById("openLoginBtn");
 const loginText = loginBtn?.querySelector("span");
@@ -137,3 +152,4 @@ cartAction?.addEventListener("click", () => {
     window.location.href = "./cart.html";
   }
 });
+
