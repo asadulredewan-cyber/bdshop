@@ -15,18 +15,43 @@ import {
 
 
 
+/* ================= AUTH STATE ================= */
 
-startPageLoad(); // 🔥 loader starts
+startPageLoad(); // 🔥 page starts loading
 
-onAuthStateChanged(auth, async (user) => {
+onAuthStateChanged(auth, (user) => {
   try {
     if (user) {
-      await loadUserName(user.uid);
+      const uid = user.uid;
+      window.CURRENT_USER = user;
+
+      /* ---- 1️⃣ Instant UI from cache ---- */
+      const cachedName = getCachedUserName(uid);
+      if (cachedName && loginText) {
+        loginText.innerText = cachedName;
+      }
+
+      const cachedQty = getCachedCartQty(uid);
+      showCartQty(cachedQty);
+
+      /* ---- 2️⃣ Background realtime sync ---- */
+      syncProfile(uid);
+      syncCart(uid);
+
+    } else {
+      window.CURRENT_USER = null;
+
+      if (loginText) loginText.innerText = "Sign Up/Sign In";
+      if (cartBadge) cartBadge.style.display = "none";
     }
+
+  } catch (err) {
+    console.error(err);
   } finally {
-    endPageLoad(); // 🔥 loader ends
+    endPageLoad(); // ✅ loader ends ONLY here
   }
 });
+
 /* ================= ELEMENTS ================= */
 const loginBtn = document.getElementById("openLoginBtn");
 const loginText = loginBtn?.querySelector("span");
@@ -152,4 +177,5 @@ cartAction?.addEventListener("click", () => {
     window.location.href = "./cart.html";
   }
 });
+
 
