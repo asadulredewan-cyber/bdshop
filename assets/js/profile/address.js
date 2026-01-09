@@ -1,4 +1,11 @@
 import {
+  getAuth,
+  PhoneAuthProvider,
+  RecaptchaVerifier
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+
+import {
   collection,
   addDoc,
   getDocs,
@@ -14,22 +21,31 @@ import {
 import { db } from "../core/firebase.js";
 
 /* ================= GLOBAL ================= */
+
+let recaptchaVerifier = null;
+let verificationId = null;
+let PENDING_ADDRESS_PAYLOAD = null;
+
 let CURRENT_UID = null;
 let BD_DATA = {};
 let EDIT_ID = null;
 
 /* ================= ELEMENTS ================= */
-const contactName  = document.getElementById("contactName");
+
+
+const auth = getAuth();
+
+const contactName = document.getElementById("contactName");
 const mobileNumber = document.getElementById("mobileNumber");
 
-const addressModal  = document.getElementById("addressModal");
+const addressModal = document.getElementById("addressModal");
 const addAddressBtn = document.getElementById("addAddressBtn");
 const cancelAddress = document.getElementById("cancelAddress");
-const saveAddress   = document.getElementById("saveAddress");
+const saveAddress = document.getElementById("saveAddress");
 
 const addrDistrict = document.getElementById("addrDistrict");
-const addrThana    = document.getElementById("addrThana");
-const addrStreet   = document.getElementById("addrStreet");
+const addrThana = document.getElementById("addrThana");
+const addrStreet = document.getElementById("addrStreet");
 const addrLandmark = document.getElementById("addrLandmark");
 const defaultCheckbox = document.getElementById("defaultAddressCheckbox");
 
@@ -82,17 +98,56 @@ addrDistrict.addEventListener("change", () => {
   });
 });
 
+
+
+
+function normalizeBDPhone(input) {
+  if (!input) return null;
+
+  // শুধু digit রাখি
+  let num = input.replace(/\D/g, "");
+
+  // +880 / 880 থাকলে remove
+  if (num.startsWith("880")) {
+    num = num.slice(3);
+  }
+
+  // শুরুতে 0 থাকলে remove
+  if (num.startsWith("0")) {
+    num = num.slice(1);
+  }
+
+  // minimum check (BD mobile usually 9–10 digit after 0)
+  if (num.length < 9 || num.length > 10) {
+    return null;
+  }
+
+  return `+880${num}`;
+}
+
+
+
+
+
+
+
+
+
+/* ================= SAVE / UPDATE ================= */
+
 /* ================= SAVE / UPDATE ================= */
 saveAddress.addEventListener("click", async () => {
 
+  const formattedPhone = normalizeBDPhone(mobileNumber.value);
+
   if (
     !contactName.value.trim() ||
-    !mobileNumber.value.trim() ||
+    !formattedPhone ||
     !addrStreet.value.trim() ||
     !addrDistrict.value ||
     !addrThana.value
   ) {
-    alert("Name, Phone, Street, District & Thana required");
+    alert("Name, valid BD phone, street, district & thana required");
     return;
   }
 
@@ -119,7 +174,7 @@ saveAddress.addEventListener("click", async () => {
 
     const payload = {
       name: contactName.value.trim(),
-      phone: mobileNumber.value.trim(),
+      phone: formattedPhone,
       street: addrStreet.value.trim(),
       landmark: addrLandmark.value.trim(),
       district: addrDistrict.value,
@@ -136,14 +191,13 @@ saveAddress.addEventListener("click", async () => {
       });
     }
 
-addressModal.classList.remove("active");
-resetForm();
+    addressModal.classList.remove("active");
+    resetForm();
 
-/* 🔁 HARD RELOAD — profile & checkout দুটোর জন্য */
-setTimeout(() => {
-  location.reload();
-}, 300);
-
+    /* 🔁 HARD RELOAD */
+    setTimeout(() => {
+      location.reload();
+    }, 300);
 
   } catch (err) {
     console.error("Address save failed:", err);
@@ -156,6 +210,7 @@ setTimeout(() => {
 
 /* ================= LOAD ADDRESS LIST ================= */
 async function loadAddresses() {
+  if (!addressList) return;
   addressList.innerHTML = "";
 
   const q = query(
@@ -216,9 +271,9 @@ window.editAddress = async (id) => {
 
   const a = snap.data();
 
-  contactName.value  = a.name || "";
+  contactName.value = a.name || "";
   mobileNumber.value = a.phone || "";
-  addrStreet.value   = a.street || "";
+  addrStreet.value = a.street || "";
   addrLandmark.value = a.landmark || "";
   addrDistrict.value = a.district || "";
 
@@ -325,4 +380,3 @@ editDefaultBtn?.addEventListener("click", async () => {
 
   addressModal.classList.add("active");
 });
-
