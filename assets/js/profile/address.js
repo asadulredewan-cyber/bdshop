@@ -136,9 +136,14 @@ saveAddress.addEventListener("click", async () => {
       });
     }
 
-    addressModal.classList.remove("active");
-    resetForm();
-    loadAddresses();
+addressModal.classList.remove("active");
+resetForm();
+
+/* 🔁 HARD RELOAD — profile & checkout দুটোর জন্য */
+setTimeout(() => {
+  location.reload();
+}, 300);
+
 
   } catch (err) {
     console.error("Address save failed:", err);
@@ -320,3 +325,4 @@ editDefaultBtn?.addEventListener("click", async () => {
 
   addressModal.classList.add("active");
 });
+
